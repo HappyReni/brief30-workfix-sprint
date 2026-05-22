@@ -6,6 +6,8 @@ const form = document.getElementById("orderForm");
 const orderRef = makeRef();
 let selectedOffer = normalizeOffer(params.get("offer") || DEFAULT_ORDER_OFFER);
 
+applyQueryDefaults();
+
 document.querySelectorAll("[data-offer-card]").forEach((button) => {
   button.addEventListener("click", () => {
     selectedOffer = normalizeOffer(button.dataset.offerCard);
@@ -91,6 +93,24 @@ function setText(id, value) {
 
 function setHref(id, value) {
   document.getElementById(id).setAttribute("href", value);
+}
+
+function applyQueryDefaults() {
+  ["buyer", "company", "approver", "contact", "useCase", "intentStatus", "memo"].forEach((name) => {
+    const value = params.get(name);
+    const field = form.elements.namedItem(name);
+    if (!value || !field) return;
+    if (field.tagName === "SELECT") {
+      ensureOption(field, value);
+    }
+    field.value = value;
+  });
+}
+
+function ensureOption(select, value) {
+  const exists = [...select.options].some((option) => option.value === value || option.textContent === value);
+  if (exists) return;
+  select.append(new Option(value, value));
 }
 
 window.BRIEF30_ORDER_OFFERS = ORDER_OFFERS;
