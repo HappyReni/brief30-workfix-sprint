@@ -13,7 +13,7 @@ export const sampleWarmContacts = [
 export function buildLaunchConsole(input = {}, options = {}) {
   const date = clean(options.date || input.date) || today();
   const month = clean(options.month || input.month) || date.slice(0, 7);
-  const publicUrl = normalizeRoot(input.publicUrl || options.publicUrl || "https://your-public-url/");
+  const publicUrl = normalizeRoot(input.publicUrl || options.publicUrl || "https://happyreni.github.io/brief30-workfix-sprint/");
   const payment = options.paymentStatus || paymentRouteState(options.orderConfig || {}, options.marketingConfig || {});
   const contacts = buildContactDesk(
     { contacts: input.contacts || "", ledger: input.ledger || "" },

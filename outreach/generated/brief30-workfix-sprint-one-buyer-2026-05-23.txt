@@ -7,10 +7,10 @@ Lead 24님, 보고서 도구 말고 더 직접적인 걸 하나 제안드려요.
 범위: 반복 업무 1개를 24시간 안에 실행 가능한 작은 도구/스크립트/템플릿으로 납품
 납품물: 시연 영상 또는 before/after 결과물, 실행 파일/HTML/스크립트, 인수인계 노트
 금액: 300,000원
-참고 허브: https://your-public-url/
-개인 진행룸: https://your-public-url/dealroom/index.html?offer=workfix&buyer=Lead+24&company=%EC%BB%A8%EC%84%A4%ED%84%B4%ED%8A%B8&useCase=%EA%B3%A0%EA%B0%9D+%EB%A9%94%EC%9D%BC%2F%ED%9B%84%EC%86%8D+%EC%97%B0%EB%9D%BD+%EC%B4%88%EC%95%88+%EB%B0%98%EB%B3%B5&ref=B30-WORKFIX-20260523-24
-청구/결제 메모: https://your-public-url/invoice/index.html?offer=workfix&buyer=Lead+24&company=%EC%BB%A8%EC%84%A4%ED%84%B4%ED%8A%B8&useCase=%EA%B3%A0%EA%B0%9D+%EB%A9%94%EC%9D%BC%2F%ED%9B%84%EC%86%8D+%EC%97%B0%EB%9D%BD+%EC%B4%88%EC%95%88+%EB%B0%98%EB%B3%B5&ref=B30-WORKFIX-20260523-24&date=2026-05-23
-샘플 납품물: https://your-public-url/outreach/generated/brief30-workfix-followup-2026-05-23.md
+참고 허브: https://happyreni.github.io/brief30-workfix-sprint/
+개인 진행룸: https://happyreni.github.io/brief30-workfix-sprint/dealroom/index.html?offer=workfix&buyer=Lead+24&company=%EC%BB%A8%EC%84%A4%ED%84%B4%ED%8A%B8&useCase=%EA%B3%A0%EA%B0%9D+%EB%A9%94%EC%9D%BC%2F%ED%9B%84%EC%86%8D+%EC%97%B0%EB%9D%BD+%EC%B4%88%EC%95%88+%EB%B0%98%EB%B3%B5&ref=B30-WORKFIX-20260523-24
+청구/결제 메모: https://happyreni.github.io/brief30-workfix-sprint/invoice/index.html?offer=workfix&buyer=Lead+24&company=%EC%BB%A8%EC%84%A4%ED%84%B4%ED%8A%B8&useCase=%EA%B3%A0%EA%B0%9D+%EB%A9%94%EC%9D%BC%2F%ED%9B%84%EC%86%8D+%EC%97%B0%EB%9D%BD+%EC%B4%88%EC%95%88+%EB%B0%98%EB%B3%B5&ref=B30-WORKFIX-20260523-24&date=2026-05-23
+샘플 납품물: https://happyreni.github.io/brief30-workfix-sprint/outreach/generated/brief30-workfix-followup-2026-05-23.md
 진행 의사만 주시면 결제 루트를 붙여 보내겠습니다.
 
 가능한 첫 입력은 딱 3개면 됩니다: 현재 반복 업무, 샘플 파일/문장 1개, 원하는 결과 형태.
@@ -18,10 +18,10 @@ Lead 24님, 보고서 도구 말고 더 직접적인 걸 하나 제안드려요.
 내부 승인/추적번호: B30-WORKFIX-20260523-24
 
 Buyer links:
-- Personal room: https://your-public-url/dealroom/index.html?offer=workfix&buyer=Lead+24&company=%EC%BB%A8%EC%84%A4%ED%84%B4%ED%8A%B8&useCase=%EA%B3%A0%EA%B0%9D+%EB%A9%94%EC%9D%BC%2F%ED%9B%84%EC%86%8D+%EC%97%B0%EB%9D%BD+%EC%B4%88%EC%95%88+%EB%B0%98%EB%B3%B5&ref=B30-WORKFIX-20260523-24
-- Invoice memo: https://your-public-url/invoice/index.html?offer=workfix&buyer=Lead+24&company=%EC%BB%A8%EC%84%A4%ED%84%B4%ED%8A%B8&useCase=%EA%B3%A0%EA%B0%9D+%EB%A9%94%EC%9D%BC%2F%ED%9B%84%EC%86%8D+%EC%97%B0%EB%9D%BD+%EC%B4%88%EC%95%88+%EB%B0%98%EB%B3%B5&ref=B30-WORKFIX-20260523-24&date=2026-05-23
-- Order page: https://your-public-url/order/index.html?offer=workfix&buyer=Lead+24&useCase=%EA%B3%A0%EA%B0%9D+%EB%A9%94%EC%9D%BC%2F%ED%9B%84%EC%86%8D+%EC%97%B0%EB%9D%BD+%EC%B4%88%EC%95%88+%EB%B0%98%EB%B3%B5
-- Sample delivery: https://your-public-url/outreach/generated/brief30-workfix-followup-2026-05-23.md
+- Personal room: https://happyreni.github.io/brief30-workfix-sprint/dealroom/index.html?offer=workfix&buyer=Lead+24&company=%EC%BB%A8%EC%84%A4%ED%84%B4%ED%8A%B8&useCase=%EA%B3%A0%EA%B0%9D+%EB%A9%94%EC%9D%BC%2F%ED%9B%84%EC%86%8D+%EC%97%B0%EB%9D%BD+%EC%B4%88%EC%95%88+%EB%B0%98%EB%B3%B5&ref=B30-WORKFIX-20260523-24
+- Invoice memo: https://happyreni.github.io/brief30-workfix-sprint/invoice/index.html?offer=workfix&buyer=Lead+24&company=%EC%BB%A8%EC%84%A4%ED%84%B4%ED%8A%B8&useCase=%EA%B3%A0%EA%B0%9D+%EB%A9%94%EC%9D%BC%2F%ED%9B%84%EC%86%8D+%EC%97%B0%EB%9D%BD+%EC%B4%88%EC%95%88+%EB%B0%98%EB%B3%B5&ref=B30-WORKFIX-20260523-24&date=2026-05-23
+- Order page: https://happyreni.github.io/brief30-workfix-sprint/order/index.html?offer=workfix&buyer=Lead+24&useCase=%EA%B3%A0%EA%B0%9D+%EB%A9%94%EC%9D%BC%2F%ED%9B%84%EC%86%8D+%EC%97%B0%EB%9D%BD+%EC%B4%88%EC%95%88+%EB%B0%98%EB%B3%B5
+- Sample delivery: https://happyreni.github.io/brief30-workfix-sprint/outreach/generated/brief30-workfix-followup-2026-05-23.md
 
 Payment route missing: configure Workfix checkout or direct payment before sending a final payment request.
 

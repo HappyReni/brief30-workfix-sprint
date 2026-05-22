@@ -13,7 +13,7 @@ export const sampleLedger = [
 
 export function buildDailyDesk(input = {}, options = {}) {
   const date = clean(input.date || options.date) || today();
-  const publicUrl = normalizeRoot(input.publicUrl || options.publicUrl || "https://your-public-url/");
+  const publicUrl = normalizeRoot(input.publicUrl || options.publicUrl || "https://happyreni.github.io/brief30-workfix-sprint/");
   const focus = clean(input.focus || options.focus) || "team";
   const pack = buildDayPack(input.ledger || "", {
     publicUrl,
@@ -86,7 +86,7 @@ function buildCommands(pack) {
 }
 
 function normalizeRoot(value) {
-  const root = clean(value) || "https://your-public-url/";
+  const root = clean(value) || "https://happyreni.github.io/brief30-workfix-sprint/";
   return root.endsWith("/") ? root : `${root}/`;
 }
 

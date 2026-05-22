@@ -22,7 +22,7 @@ export function buildOrderCommand(values) {
   return [
     buildPrepareSellerCommand(direct, ["sellerName", "supportEmail", "bankAccount", "contactLine", "deliveryWindow"]),
     "npm run audit:release:strict",
-    "npm run ops:runbook -- outreach/prospect-seed.csv --url=https://your-public-url"
+    "npm run ops:runbook -- outreach/prospect-seed.csv --url=https://happyreni.github.io/brief30-workfix-sprint"
   ].join("\n");
 }
 
@@ -40,7 +40,7 @@ export function buildCheckoutCommand(values) {
   return [
     buildPrepareSellerCommand(links, ["teamUrl", "workfixUrl", "buyUrl", "setupUrl", "serviceUrl", "testerUrl"]),
     "npm run audit:release:strict",
-    "npm run ops:runbook -- outreach/prospect-seed.csv --url=https://your-public-url"
+    "npm run ops:runbook -- outreach/prospect-seed.csv --url=https://happyreni.github.io/brief30-workfix-sprint"
   ].join("\n");
 }
 

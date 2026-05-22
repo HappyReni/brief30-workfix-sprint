@@ -58,7 +58,7 @@ function normalizeValues(values) {
     teamUrl: clean(values.teamUrl),
     workfixUrl: clean(values.workfixUrl),
     testerUrl: clean(values.testerUrl),
-    publicUrl: normalizeRoot(values.publicUrl) || "https://your-public-url/"
+    publicUrl: normalizeRoot(values.publicUrl) || "https://happyreni.github.io/brief30-workfix-sprint/"
   };
 }
 

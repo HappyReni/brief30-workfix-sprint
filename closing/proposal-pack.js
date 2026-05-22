@@ -137,7 +137,7 @@ function buildUrl(root, path, params) {
 }
 
 function normalizeRoot(value) {
-  const root = clean(value) || "https://your-public-url/";
+  const root = clean(value) || "https://happyreni.github.io/brief30-workfix-sprint/";
   return root.endsWith("/") ? root : `${root}/`;
 }
 
