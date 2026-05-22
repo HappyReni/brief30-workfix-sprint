@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f766e'/%3E%3Cpath d='M16 19h32v6H16zm0 11h24v6H16zm0 11h32v6H16z' fill='%23fffaf0'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./config.js"></script>
+    <script src="./app.js" type="module"></script>
+    <title>Brief30 Direct Order</title>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <nav>
+          <strong>Brief30</strong>
+          <a href="../marketing/index.html">Sales page</a>
+        </nav>
+        <section class="heroGrid">
+          <div>
+            <p class="eyebrow">Direct order</p>
+            <h1>보고서 정리 시간을 바로 줄이는 구매 요청서</h1>
+            <p>
+              외부 스토어 없이도 팀 브리핑 스프린트 승인 문안, 주문 메시지, 운영판 CSV를 만들고
+              실제 결제 증거만 매출로 남길 수 있습니다.
+            </p>
+            <div class="heroActions">
+              <a class="secondary" id="demoLink" href="../diagnostic/index.html">무료 진단 열기</a>
+              <button class="secondary" id="copyApprovalTop" type="button">승인 요청 복사</button>
+              <button class="primary" id="copyOrderTop" type="button">주문 메시지 복사</button>
+            </div>
+          </div>
+          <aside class="mathPanel" aria-label="Revenue ladder">
+            <span>월 300,000원까지</span>
+            <strong id="targetMath">팀 스프린트 1건</strong>
+            <p id="targetCopy">300,000원 x 1 = 300,000원</p>
+          </aside>
+        </section>
+      </header>
+
+      <section class="offerGrid" aria-label="Offer options">
+        <button class="offerCard" data-offer-card="self" type="button">
+          <span>Self tool</span>
+          <strong>19,000원</strong>
+          <small>단일 HTML 앱과 예시팩</small>
+        </button>
+        <button class="offerCard" data-offer-card="setup" type="button">
+          <span>Setup pack</span>
+          <strong>49,000원</strong>
+          <small>툴 + 첫 업무 메모 셋업</small>
+        </button>
+        <button class="offerCard" data-offer-card="service" type="button">
+          <span>Done-for-you</span>
+          <strong>99,000원</strong>
+          <small>메모 3개 정리와 반복 포맷</small>
+        </button>
+        <button class="offerCard isActive" data-offer-card="team" type="button">
+          <span>Team sprint</span>
+          <strong>300,000원</strong>
+          <small>팀 메모 10개와 4주 브리핑</small>
+        </button>
+        <button class="offerCard" data-offer-card="workfix" type="button">
+          <span>Workfix Sprint</span>
+          <strong>300,000원</strong>
+          <small>반복 업무 1개 24시간 자동화</small>
+        </button>
+      </section>
+
+      <section class="orderGrid">
+        <form class="panel" id="orderForm">
+          <div class="sectionHeader">
+            <p class="eyebrow">Buyer info</p>
+            <h2>주문 정보</h2>
+          </div>
+          <label>
+            <span>이름/입금자명</span>
+            <input name="buyer" placeholder="예: 홍길동" required />
+          </label>
+          <label>
+            <span>회사/팀</span>
+            <input name="company" placeholder="예: OO팀" />
+          </label>
+          <label>
+            <span>승인권자/공유 대상</span>
+            <input name="approver" placeholder="예: 팀장님, 대표님, 구매 담당자" />
+          </label>
+          <label>
+            <span>회신 받을 이메일 또는 연락처</span>
+            <input name="contact" placeholder="email@example.com 또는 카카오/DM" required />
+          </label>
+          <label>
+            <span>필요한 결과물</span>
+            <select name="useCase">
+              <option>주간보고</option>
+              <option>회의록</option>
+              <option>고객사 업데이트</option>
+              <option>후속 메일</option>
+              <option>임원 보고 요약</option>
+              <option>팀 주간 브리핑</option>
+              <option>반복 업무 1개 자동화</option>
+              <option>엑셀/CSV 정리 자동화</option>
+              <option>고객 메일 반복 자동화</option>
+            </select>
+          </label>
+          <label>
+            <span>현재 상태</span>
+            <select name="intentStatus">
+              <option value="approval_request">내부 승인 요청</option>
+              <option value="approved_pending_payment">승인됨/결제 대기</option>
+              <option value="payment_route_needed">결제 정보 요청</option>
+            </select>
+          </label>
+          <label>
+            <span>메모</span>
+            <textarea name="memo" placeholder="원하는 출력, 마감, 민감정보 제외 여부"></textarea>
+          </label>
+        </form>
+
+        <aside class="panel paymentPanel">
+          <div class="sectionHeader">
+            <p class="eyebrow">Payment route</p>
+            <h2 id="selectedOfferTitle">300,000원 팀 브리핑 스프린트</h2>
+          </div>
+          <dl>
+            <div>
+              <dt>주문번호</dt>
+              <dd id="orderRef"></dd>
+            </div>
+            <div>
+              <dt>결제 금액</dt>
+              <dd id="orderAmount"></dd>
+            </div>
+            <div>
+              <dt>상태</dt>
+              <dd id="intentStatusLabel"></dd>
+            </div>
+            <div>
+              <dt>입금/결제 안내</dt>
+              <dd id="bankAccount"></dd>
+            </div>
+            <div>
+              <dt>전달 시간</dt>
+              <dd id="deliveryWindow"></dd>
+            </div>
+          </dl>
+          <div class="previewStack">
+            <section>
+              <h3>주문 메시지</h3>
+              <pre id="orderPreview"></pre>
+            </section>
+            <section>
+              <h3>내부 승인 요청</h3>
+              <pre id="approvalPreview"></pre>
+            </section>
+            <section>
+              <h3>운영판 CSV</h3>
+              <pre class="compactPreview" id="operatorPreview"></pre>
+            </section>
+          </div>
+          <div class="buttonRow">
+            <button class="primary" id="copyOrder" type="button">주문 메시지 복사</button>
+            <button class="secondary" id="copyApproval" type="button">승인 요청 복사</button>
+            <button class="secondary" id="copyOperator" type="button">CSV 복사</button>
+            <a class="secondary" id="emailOrder" href="#">이메일로 보내기</a>
+            <a class="secondary" id="intakeLink" href="../intake/index.html">Intake 작성</a>
+          </div>
+          <p class="finePrint">
+            회사명, 고객명, 개인정보는 지우고 보내주세요. 결제 확인 후 운영판의
+            `Payment evidence`에 주문번호를 기록하면 월 매출에 반영됩니다.
+          </p>
+        </aside>
+      </section>
+    </main>
+  </body>
+</html>

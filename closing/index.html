@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23bd8917'/%3E%3Cpath d='M16 19h32v5H16zm0 11h22v5H16zm0 11h30v5H16z' fill='%23fffaf0'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="../order/config.js"></script>
+    <script type="module" src="./app.js"></script>
+    <title>Brief30 Close Desk</title>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <nav>
+          <strong>Brief30 close desk</strong>
+          <a href="../diagnostic/index.html">Diagnostic</a>
+          <a href="../order/index.html?offer=setup">Order</a>
+          <a href="../operator/index.html">Operator</a>
+        </nav>
+        <section class="heroGrid">
+          <div>
+            <p class="eyebrow">Quote. Payment. Handoff.</p>
+            <h1>관심 답장을 입금 안내로 닫는다</h1>
+            <p>
+              무료 진단 후 망설이는 사람에게 견적, 입금 안내, 결제 확인,
+              운영판 기록용 증거 라인을 한 번에 보냅니다.
+            </p>
+          </div>
+          <aside class="quoteCard">
+            <span id="quoteRef"></span>
+            <strong id="quoteAmount"></strong>
+            <p id="quoteOffer"></p>
+            <small id="quoteDelivery"></small>
+          </aside>
+        </section>
+      </header>
+
+      <section class="workspace">
+        <form class="panel controlPanel" id="closeForm">
+          <div class="sectionHead">
+            <p class="eyebrow">Buyer context</p>
+            <h2>클로징 입력</h2>
+          </div>
+          <label>
+            <span>구매자/호칭</span>
+            <input name="buyer" value="OO님" />
+          </label>
+          <label>
+            <span>연락처/대화방</span>
+            <input name="contact" placeholder="email, DM, 카카오" />
+          </label>
+          <label>
+            <span>필요한 결과물</span>
+            <select name="useCase">
+              <option>고객사 업데이트</option>
+              <option>주간보고</option>
+              <option>회의록</option>
+              <option>임원 브리프</option>
+              <option>리스크 보고</option>
+            </select>
+          </label>
+          <label>
+            <span>오퍼</span>
+            <select name="offer">
+              <option value="setup">49,000원 셋업팩</option>
+              <option value="service">99,000원 대행팩</option>
+              <option value="team">300,000원 팀 브리핑 스프린트</option>
+              <option value="self">19,000원 셀프툴</option>
+            </select>
+          </label>
+          <label>
+            <span>판매자명</span>
+            <input name="seller" />
+          </label>
+          <label>
+            <span>입금/결제 안내</span>
+            <textarea name="payment"></textarea>
+          </label>
+          <label>
+            <span>전달 시간</span>
+            <input name="deliveryWindow" />
+          </label>
+          <div class="linkGrid">
+            <a id="orderLink" href="../order/index.html?offer=setup">주문 페이지</a>
+            <a id="intakeLink" href="../intake/index.html">Intake</a>
+            <a id="fulfillmentLink" href="../fulfillment/index.html">납품 작업대</a>
+          </div>
+        </form>
+
+        <section class="panel outputPanel">
+          <div class="sectionHead">
+            <p class="eyebrow">Send in order</p>
+            <h2>복사할 클로징 문안</h2>
+          </div>
+          <article class="copyBlock">
+            <div>
+              <h3>1. 입금 요청</h3>
+              <button id="copyRequest" type="button">복사</button>
+            </div>
+            <pre id="paymentRequest"></pre>
+          </article>
+          <article class="copyBlock">
+            <div>
+              <h3>2. 결제 확인</h3>
+              <button id="copyConfirm" type="button">복사</button>
+            </div>
+            <pre id="confirmation"></pre>
+          </article>
+          <article class="copyBlock evidence">
+            <div>
+              <h3>3. 운영판 증거 라인</h3>
+              <button id="copyEvidence" type="button">복사</button>
+            </div>
+            <pre id="evidenceLine"></pre>
+          </article>
+          <article class="copyBlock">
+            <div>
+              <h3>4. 24시간 후속</h3>
+              <button id="copyNudge" type="button">복사</button>
+            </div>
+            <pre id="paymentNudge"></pre>
+          </article>
+          <article class="copyBlock">
+            <div>
+              <h3>5. 부담 낮추기</h3>
+              <button id="copyFallback" type="button">복사</button>
+            </div>
+            <pre id="fallbackClose"></pre>
+          </article>
+          <button class="primary" id="downloadClose" type="button">클로징 팩 저장</button>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,438 @@
+:root {
+  --ink: #19231f;
+  --muted: #627067;
+  --paper: #fffaf0;
+  --wash: #edf1e8;
+  --teal: #0f766e;
+  --red: #d64b34;
+  --gold: #b98518;
+  --charcoal: #111a16;
+  --line: rgba(25, 35, 31, 0.16);
+  color: var(--ink);
+  background: var(--wash);
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+.hero {
+  position: relative;
+  display: grid;
+  min-height: 88vh;
+  align-items: end;
+  overflow: hidden;
+  padding: 24px clamp(18px, 5vw, 76px) 70px;
+  color: #fff;
+  background: var(--charcoal);
+}
+
+.hero::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    linear-gradient(90deg, rgba(12, 20, 17, 0.92), rgba(12, 20, 17, 0.64), rgba(12, 20, 17, 0.12)),
+    repeating-linear-gradient(0deg, rgba(255, 250, 240, 0.04) 0 1px, transparent 1px 7px);
+}
+
+.hero img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 56% 24%;
+  filter: saturate(0.85) contrast(1.04);
+}
+
+.topnav,
+.heroCopy {
+  position: relative;
+  z-index: 1;
+}
+
+.topnav {
+  position: absolute;
+  top: 22px;
+  right: clamp(18px, 5vw, 76px);
+  left: clamp(18px, 5vw, 76px);
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  font-weight: 900;
+}
+
+.topnav div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: flex-end;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.heroCopy {
+  max-width: 820px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--red);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  max-width: 860px;
+  margin-bottom: 18px;
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  font-size: clamp(3.2rem, 4.9rem, 4.9rem);
+  line-height: 0.98;
+  letter-spacing: 0;
+}
+
+h2 {
+  margin-bottom: 16px;
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  font-size: clamp(2.1rem, 3rem, 3rem);
+  line-height: 1.06;
+  letter-spacing: 0;
+}
+
+h3 {
+  margin-bottom: 9px;
+  font-size: 1.2rem;
+}
+
+.heroCopy > p:not(.eyebrow) {
+  max-width: 680px;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 1.16rem;
+  line-height: 1.62;
+}
+
+.heroActions,
+.buttonRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.primary,
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  border-radius: 8px;
+  padding: 0 16px;
+  font-weight: 900;
+}
+
+.primary {
+  color: #fff;
+  background: var(--teal);
+}
+
+.secondary {
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: transparent;
+}
+
+.secondary.dark {
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+.decisionBand,
+.proofBand,
+.priceBand,
+.healthBand {
+  display: grid;
+  gap: 28px;
+  padding: clamp(44px, 7vw, 86px) clamp(18px, 5vw, 78px);
+}
+
+.decisionBand {
+  grid-template-columns: minmax(260px, 0.74fr) minmax(0, 1.26fr);
+  background: var(--paper);
+}
+
+.sectionLead {
+  max-width: 480px;
+}
+
+.routeGrid {
+  display: grid;
+  gap: 12px;
+}
+
+.routeCard {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: center;
+  min-height: 122px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+  background: #fffefa;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.routeCard:hover {
+  transform: translateY(-2px);
+  border-color: rgba(15, 118, 110, 0.42);
+  box-shadow: 0 18px 34px rgba(25, 35, 31, 0.09);
+}
+
+.routeIndex {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--red);
+  font-weight: 900;
+}
+
+.routeCard small,
+.priceGrid span {
+  color: var(--gold);
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.routeCard p,
+.priceBand p,
+.proofBand p {
+  margin-bottom: 0;
+  color: var(--muted);
+  line-height: 1.62;
+}
+
+.routeCard > strong {
+  min-width: 86px;
+  color: var(--teal);
+  font-size: 1.08rem;
+  text-align: right;
+}
+
+.proofBand {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  background: #e7ede4;
+}
+
+.proofBand article,
+.priceGrid a,
+.healthPanel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fffefa;
+}
+
+.proofBand article {
+  padding: 20px;
+}
+
+.proofBand span {
+  display: inline-grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  margin-bottom: 18px;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--teal);
+  font-weight: 900;
+}
+
+.priceBand {
+  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
+  align-items: center;
+  background: #f5f1e6;
+}
+
+.priceGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.priceGrid a {
+  display: grid;
+  min-height: 166px;
+  align-content: start;
+  gap: 12px;
+  padding: 18px;
+}
+
+.priceGrid a.featured {
+  color: #fff;
+  background: var(--charcoal);
+}
+
+.priceGrid strong {
+  font-size: 2rem;
+}
+
+.priceGrid small {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.priceGrid a.featured small {
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.healthBand {
+  grid-template-columns: minmax(260px, 0.58fr) minmax(0, 1.42fr);
+  background: #eaf0e7;
+}
+
+.healthPanel {
+  display: grid;
+  gap: 16px;
+  padding: 18px;
+}
+
+.healthRows {
+  display: grid;
+  gap: 8px;
+}
+
+.healthRow {
+  display: grid;
+  grid-template-columns: 130px minmax(0, 1fr) 88px;
+  gap: 10px;
+  align-items: center;
+  min-height: 46px;
+  border-bottom: 1px solid var(--line);
+  padding: 8px 0;
+}
+
+.healthRow code {
+  overflow: hidden;
+  color: var(--muted);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.healthRow strong {
+  border-radius: 999px;
+  padding: 6px 8px;
+  color: #fff;
+  background: var(--gold);
+  font-size: 0.86rem;
+  text-align: center;
+}
+
+.healthRow strong[data-state="정상"],
+.healthRow strong[data-state="브라우저열림"] {
+  background: var(--teal);
+}
+
+.healthRow strong[data-state="확인필요"] {
+  background: var(--red);
+}
+
+pre {
+  overflow: auto;
+  margin: 0;
+  border-radius: 8px;
+  padding: 14px;
+  color: #f8f2e7;
+  background: var(--charcoal);
+  white-space: pre-wrap;
+  line-height: 1.58;
+}
+
+button:disabled {
+  opacity: 0.68;
+  cursor: wait;
+}
+
+@media (max-width: 880px) {
+  .topnav {
+    position: relative;
+    inset: auto;
+    margin-bottom: 90px;
+  }
+
+  .decisionBand,
+  .priceBand,
+  .healthBand,
+  .proofBand,
+  .priceGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .routeCard,
+  .healthRow {
+    grid-template-columns: 1fr;
+  }
+
+  .routeCard > strong,
+  .healthRow strong {
+    text-align: left;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero {
+    min-height: 86vh;
+    padding-bottom: 52px;
+  }
+
+  .topnav {
+    display: grid;
+  }
+
+  .topnav div {
+    justify-content: flex-start;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 2.15rem;
+  }
+
+  .primary,
+  .secondary {
+    width: 100%;
+  }
+}

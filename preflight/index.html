@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f766e'/%3E%3Cpath d='M16 17h32v6H16zm0 11h26v6H16zm0 11h32v6H16zm0 11h16v6H16z' fill='%23fffaf0'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="../order/config.js"></script>
+    <script src="../marketing/config.js"></script>
+    <script type="module" src="./app.js"></script>
+    <title>Brief30 Publish Preflight</title>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <nav>
+          <strong>Brief30 preflight</strong>
+          <a href="../hub/index.html">Hub</a>
+          <a href="../order/index.html?offer=setup">Order</a>
+          <a href="../operator/index.html">Operator</a>
+          <a href="../launch/index.html">Sprint</a>
+        </nav>
+        <section class="heroGrid">
+          <div>
+            <p class="eyebrow">Before you send the link</p>
+            <h1>돈 받을 준비가 됐는지 먼저 본다</h1>
+            <p>
+              공개 링크, 주문 경로, 연락처, 결제 안내, 첫 DM 문안까지 한 화면에서 확인합니다.
+              빨간 항목이 남아 있으면 공유보다 설정이 먼저입니다.
+            </p>
+          </div>
+          <aside class="scoreCard">
+            <span>launch readiness</span>
+            <strong id="scoreValue">0%</strong>
+            <div class="scoreTrack"><div id="scoreFill"></div></div>
+            <small id="scoreText">검사 준비 중</small>
+          </aside>
+        </section>
+      </header>
+
+      <section class="statusGrid" id="statusGrid" aria-label="Preflight status"></section>
+
+      <section class="workspace">
+        <form class="panel" id="setupForm">
+          <div class="panelHead">
+            <div>
+              <p class="eyebrow">Configure once</p>
+              <h2>직접 주문 설정</h2>
+            </div>
+            <button class="ghost" id="loadCurrent" type="button">현재값</button>
+          </div>
+          <label>
+            <span>판매자명</span>
+            <input name="sellerName" placeholder="Brief30" />
+          </label>
+          <label>
+            <span>회신 이메일</span>
+            <input name="supportEmail" placeholder="your-real-email@domain.kr" />
+          </label>
+          <label>
+            <span>입금/결제 안내</span>
+            <input name="bankAccount" placeholder="은행명 실제계좌 예금주명" />
+          </label>
+          <label>
+            <span>연락 안내</span>
+            <input name="contactLine" placeholder="입금 후 주문 메시지를 이메일 또는 DM으로 보내주세요." />
+          </label>
+          <label>
+            <span>전달 시간</span>
+            <input name="deliveryWindow" placeholder="입금 확인 후 24시간 이내" />
+          </label>
+          <div class="divider">
+            <p class="eyebrow">Or use checkout</p>
+            <h2>외부 결제 링크</h2>
+          </div>
+          <label>
+            <span>팀 스프린트 checkout</span>
+            <input name="teamUrl" placeholder="https://pay.domain.kr/team" />
+          </label>
+          <label>
+            <span>Workfix checkout</span>
+            <input name="workfixUrl" placeholder="https://pay.domain.kr/workfix" />
+          </label>
+          <label>
+            <span>셀프툴 checkout</span>
+            <input name="buyUrl" placeholder="https://pay.domain.kr/self" />
+          </label>
+          <label>
+            <span>셋업팩 checkout</span>
+            <input name="setupUrl" placeholder="https://pay.domain.kr/setup" />
+          </label>
+          <label>
+            <span>대행팩 checkout</span>
+            <input name="serviceUrl" placeholder="https://pay.domain.kr/service" />
+          </label>
+          <label>
+            <span>테스터/문의 폼</span>
+            <input name="testerUrl" placeholder="https://forms.domain.kr/brief30" />
+          </label>
+        </form>
+
+        <section class="panel commandPanel">
+          <div class="panelHead">
+            <div>
+              <p class="eyebrow">Run and rebuild</p>
+              <h2>설정 명령</h2>
+            </div>
+            <button class="ghost" data-copy="#orderCommand" type="button">명령 복사</button>
+          </div>
+          <pre id="orderCommand"></pre>
+          <div class="panelHead compact">
+            <div>
+              <p class="eyebrow">Checkout route</p>
+              <h2>외부 결제 명령</h2>
+            </div>
+            <button class="ghost" data-copy="#checkoutCommand" type="button">명령 복사</button>
+          </div>
+          <pre id="checkoutCommand"></pre>
+          <div class="panelHead compact">
+            <div>
+              <p class="eyebrow">Send today</p>
+              <h2>공유 문안</h2>
+            </div>
+            <button class="ghost" data-copy="#shareCopy" type="button">문안 복사</button>
+          </div>
+          <label>
+            <span>공개 루트 URL</span>
+            <input id="publicUrl" placeholder="https://your-site.example.com/" />
+          </label>
+          <pre id="shareCopy"></pre>
+        </section>
+      </section>
+
+      <section class="actionBand">
+        <article>
+          <span>01</span>
+          <strong>설정</strong>
+          <p>`prepare:seller` 명령을 실행하면 설정, 패키징, strict audit까지 이어집니다.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <strong>업로드</strong>
+          <p>`release/seller/` 전체를 올리고 루트 URL이 허브로 가는지 확인합니다.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <strong>발송</strong>
+          <p>따뜻한 지인 10명에게 공유 문안을 보내고 답장은 운영판에 기록합니다.</p>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>

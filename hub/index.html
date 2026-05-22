@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2319271f'/%3E%3Cpath d='M16 17h32v6H16zm0 11h21v6H16zm0 11h32v6H16zm0 11h18v6H16z' fill='%23fffaf0'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.js"></script>
+    <title>Brief30 Link Hub</title>
+  </head>
+  <body>
+    <header class="hero">
+      <img src="../marketing/brief30-preview.png" alt="Brief30 app preview" />
+      <nav class="topnav" aria-label="Primary">
+        <strong>Brief30</strong>
+        <div>
+          <a href="../diagnostic/index.html">무료 진단</a>
+          <a href="../proof/index.html">Before/After</a>
+          <a href="../service/index.html">대행팩</a>
+          <a href="../team/index.html">팀 스프린트</a>
+          <a href="../launch-console/index.html">런치 콘솔</a>
+          <a href="../daily-desk/index.html">일일</a>
+          <a href="../closing/index.html?offer=team">클로징</a>
+          <a href="../followup-desk/index.html">후속</a>
+          <a href="../payment-setup/index.html">결제 셋업</a>
+          <a href="../live-desk/index.html">라이브</a>
+          <a href="../money-day/index.html">머니데이</a>
+          <a href="../approval/index.html?offer=team">승인 메모</a>
+          <a href="../dealroom/index.html?offer=team">진행룸</a>
+          <a href="../order/index.html?offer=setup">주문</a>
+        </div>
+      </nav>
+      <section class="heroCopy">
+        <p class="eyebrow">Local-first Korean work brief</p>
+        <h1>업무 메모가 보고서가 되는지 먼저 확인하세요</h1>
+        <p>
+          회사명과 고객명을 지운 메모 1개로 무료 미리보기를 만들고,
+          맞으면 셀프툴 또는 셋업팩으로 바로 시작합니다.
+        </p>
+        <div class="heroActions">
+          <a class="primary" href="../diagnostic/index.html">무료 진단 열기</a>
+          <a class="secondary" href="../proof/index.html">결과 예시 보기</a>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <section class="decisionBand" aria-labelledby="decision-title">
+        <div class="sectionLead">
+          <p class="eyebrow">Choose your path</p>
+          <h2 id="decision-title">처음 5분은 진단, 결제 전에는 예시, 결정하면 주문</h2>
+        </div>
+        <div class="routeGrid" id="routeGrid"></div>
+      </section>
+
+      <section class="proofBand" aria-label="Brief30 guarantees">
+        <article>
+          <span>01</span>
+          <h3>로컬 브라우저 실행</h3>
+          <p>로그인, API 키, 계정 연결 없이 열어서 씁니다.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>민감정보 삭제 기준</h3>
+          <p>회사명, 고객명, 실명, 계약 금액은 보내기 전 지웁니다.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>결과물 중심 구매</h3>
+          <p>툴 설명보다 주간보고와 회의록 결과물을 먼저 확인합니다.</p>
+        </article>
+      </section>
+
+      <section class="priceBand" aria-labelledby="price-title">
+        <div>
+          <p class="eyebrow">Offer ladder</p>
+          <h2 id="price-title">필요한 만큼만 시작하세요</h2>
+          <p>
+            혼자 쓸 수 있으면 셀프툴, 첫 업무 메모까지 맞춰야 하면 셋업팩,
+            결과물만 빨리 필요하면 대행팩, 팀 예산이 있으면 팀 스프린트를 고르면 됩니다.
+          </p>
+        </div>
+        <div class="priceGrid">
+          <a href="../order/index.html?offer=self">
+            <span>Self tool</span>
+            <strong>19,000원</strong>
+            <small>앱, 예시팩, 구매자 안내</small>
+          </a>
+          <a class="featured" href="../order/index.html?offer=setup">
+            <span>Setup pack</span>
+            <strong>49,000원</strong>
+            <small>툴과 첫 업무 메모 셋업</small>
+          </a>
+          <a href="../service/index.html">
+            <span>Done-for-you</span>
+            <strong>99,000원</strong>
+            <small>메모 3개 정리와 반복 포맷</small>
+          </a>
+          <a href="../team/index.html">
+            <span>Team sprint</span>
+            <strong>300,000원</strong>
+            <small>메모 10개, 4주 브리핑, 실행 액션 보드</small>
+          </a>
+        </div>
+      </section>
+
+      <section class="healthBand" aria-labelledby="health-title">
+        <div>
+          <p class="eyebrow">Link health</p>
+          <h2 id="health-title">공유 전 링크 확인</h2>
+        </div>
+        <div class="healthPanel">
+          <div class="buttonRow">
+            <button class="primary" id="checkLinks" type="button">링크 검증</button>
+            <button class="secondary dark" id="copyShare" type="button">공유 문안 복사</button>
+          </div>
+          <div class="healthRows" id="healthRows"></div>
+          <pre id="shareText"></pre>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23b98518'/%3E%3Cpath d='M16 18h32v6H16zm0 11h18v6H16zm0 11h32v6H16zm0 11h24v5H16z' fill='%23fffaf0'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.js"></script>
+    <title>Brief30 Aftercare Desk</title>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <nav>
+          <strong>Brief30 aftercare</strong>
+          <a href="../fulfillment/index.html">Fulfill</a>
+          <a href="../operator/index.html">Operator</a>
+          <a href="../proof/index.html">Proof</a>
+          <a href="../outbox/index.html">Outbox</a>
+        </nav>
+        <section class="heroGrid">
+          <div>
+            <p class="eyebrow">Turn one buyer into the next two</p>
+            <h1>납품 후 3일 안에 후기와 소개를 받는다</h1>
+            <p>
+              구매자가 실제로 썼는지 확인하고, 짧은 후기와 소개 후보를 요청합니다.
+              새 매출은 만족한 첫 구매자 옆에서 더 빨리 나옵니다.
+            </p>
+          </div>
+          <aside class="mathCard">
+            <span>Referral math</span>
+            <strong>2 referrals</strong>
+            <p>셋업팩 2건이면 98,000원 추가 기회</p>
+          </aside>
+        </section>
+      </header>
+
+      <section class="kpiGrid" id="kpiGrid" aria-label="Aftercare metrics"></section>
+
+      <section class="workspace">
+        <form class="panel controlPanel" id="aftercareForm">
+          <div class="panelHead">
+            <div>
+              <p class="eyebrow">Buyer context</p>
+              <h2>납품 후 정보</h2>
+            </div>
+            <button class="ghost" id="loadSample" type="button">샘플</button>
+          </div>
+          <label>
+            <span>구매자</span>
+            <input name="buyer" value="김PM" />
+          </label>
+          <label>
+            <span>주문번호</span>
+            <input name="orderRef" value="B30-CLOSE-20260522-DEMO" />
+          </label>
+          <label>
+            <span>구매 오퍼</span>
+            <select name="offer">
+              <option value="setup">49,000원 셋업팩</option>
+              <option value="service">99,000원 대행팩</option>
+              <option value="self">19,000원 셀프툴</option>
+            </select>
+          </label>
+          <label>
+            <span>소개 오퍼</span>
+            <select name="referralOffer">
+              <option value="service">99,000원 대행팩</option>
+              <option value="setup">49,000원 셋업팩</option>
+              <option value="self">19,000원 셀프툴</option>
+            </select>
+          </label>
+          <label>
+            <span>납품 결과물</span>
+            <input name="result" value="주간보고 초안 + 반복 포맷" />
+          </label>
+          <label>
+            <span>공개 루트 URL</span>
+            <input name="publicUrl" value="https://your-site.example.com/" />
+          </label>
+          <label>
+            <span>받은 후기 문장</span>
+            <textarea name="quote">보고서 정리 시간이 확실히 줄었고, 다음 주에도 같은 포맷으로 쓸 수 있을 것 같습니다.</textarea>
+          </label>
+          <label>
+            <span>소개 후보</span>
+            <textarea name="referrals">동료 PM
+운영팀 리드</textarea>
+          </label>
+        </form>
+
+        <section class="panel outputPanel">
+          <div class="panelHead">
+            <div>
+              <p class="eyebrow">Copy queue</p>
+              <h2>후속 메시지</h2>
+            </div>
+            <button class="ghost" id="copyAll" type="button">전체 복사</button>
+          </div>
+          <div class="tabs" id="tabs"></div>
+          <pre id="messagePreview"></pre>
+          <div class="buttonRow">
+            <button class="primary" id="copyCurrent" type="button">현재 문안 복사</button>
+            <button class="secondary" id="downloadPack" type="button">후속팩 저장</button>
+          </div>
+        </section>
+      </section>
+
+      <section class="panel csvPanel">
+        <div class="panelHead">
+          <div>
+            <p class="eyebrow">Operator handoff</p>
+            <h2>소개 후보 import CSV</h2>
+          </div>
+          <button class="ghost" id="copyCsv" type="button">CSV 복사</button>
+        </div>
+        <pre id="referralCsv"></pre>
+      </section>
+    </main>
+  </body>
+</html>

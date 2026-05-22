@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f766e'/%3E%3Cpath d='M16 18h32v5H16zm0 11h20v5H16zm0 11h28v5H16z' fill='%23fffaf0'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.js"></script>
+    <title>Brief30 Free Diagnostic</title>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <nav>
+          <strong>Brief30 diagnostic</strong>
+          <a href="../marketing/index.html">Sales</a>
+          <a href="../order/index.html?offer=setup">Order</a>
+          <a href="../intake/index.html">Intake</a>
+        </nav>
+        <section class="hero">
+          <div>
+            <p class="eyebrow">Free preview before purchase</p>
+            <h1>익명 메모 1개로 바로 살지 판단하게 만든다</h1>
+            <p>
+              DM 받은 사람이 회사명과 고객명을 지운 메모를 넣으면, 3줄 요약과 보고서 미리보기를 즉시 봅니다.
+              전체 패킷은 셋업팩 또는 대행팩으로 닫습니다.
+            </p>
+          </div>
+          <aside class="scoreBox">
+            <span>readiness</span>
+            <strong id="scoreValue">0</strong>
+            <div class="scoreTrack"><div id="scoreFill"></div></div>
+          </aside>
+        </section>
+      </header>
+
+      <section class="workspace">
+        <form class="panel inputPanel" id="diagnosticForm">
+          <div class="panelHead">
+            <div>
+              <p class="eyebrow">Prospect input</p>
+              <h2>무료 진단 입력</h2>
+            </div>
+            <button class="ghost" id="loadSample" type="button">샘플</button>
+          </div>
+          <label>
+            <span>업무 이름</span>
+            <input name="title" value="고객사 주간 업데이트" />
+          </label>
+          <label>
+            <span>받는 사람</span>
+            <input name="audience" value="고객사 담당자" />
+          </label>
+          <label>
+            <span>원하는 결과물</span>
+            <select name="outputType">
+              <option>고객사 업데이트</option>
+              <option>주간보고</option>
+              <option>회의록</option>
+              <option>임원 브리프</option>
+              <option>리스크 보고</option>
+            </select>
+          </label>
+          <label>
+            <span>추천 오퍼</span>
+            <select name="offer">
+              <option value="setup">49,000원 셋업팩</option>
+              <option value="service">99,000원 대행팩</option>
+              <option value="self">19,000원 셀프툴</option>
+            </select>
+          </label>
+          <label>
+            <span>익명화된 업무 메모</span>
+            <textarea name="note"></textarea>
+          </label>
+          <div class="privacyBox">
+            <strong>보내기 전 삭제</strong>
+            <span>회사명, 고객명, 실명, 전화번호, 계정, 계약 금액, 내부 URL</span>
+          </div>
+        </form>
+
+        <section class="panel resultPanel">
+          <div class="panelHead">
+            <div>
+              <p class="eyebrow">Instant result</p>
+              <h2>미리보기 결과</h2>
+            </div>
+            <button class="ghost" id="copyResult" type="button">결과 복사</button>
+          </div>
+          <div id="resultOutput"></div>
+          <div class="adviceBox">
+            <p class="eyebrow">Improve before sending</p>
+            <ul id="adviceList"></ul>
+          </div>
+          <div class="ctaGrid" id="ctaGrid"></div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2319271f'/%3E%3Cpath d='M16 17h32v6H16zm0 11h21v6H16zm0 11h32v6H16zm0 11h18v6H16z' fill='%23fffaf0'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.js"></script>
+    <title>Brief30 Payment Setup</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <a href="../hub/index.html">Brief30</a>
+      <nav aria-label="Payment setup links">
+        <a href="../preflight/index.html">Preflight</a>
+        <a href="../order/index.html?offer=team">Team order</a>
+        <a href="../outbox/index.html">Outbox</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Payment route</p>
+          <h1>팀 1건 결제를 받을 준비부터 닫기</h1>
+          <p>실제 회신 이메일과 입금 안내, 또는 결제 URL을 넣으면 live 발송 명령까지 한 번에 만듭니다.</p>
+        </div>
+        <aside class="statusPanel">
+          <span id="routeStatus" data-ready="false">결제 루트 필요</span>
+          <strong>월 30 기준: 팀 스프린트 1건</strong>
+          <p id="nextAction"></p>
+        </aside>
+      </section>
+
+      <section class="workspace">
+        <form id="setupForm" class="setupForm">
+          <div class="modeSwitch" aria-label="Payment route type">
+            <button type="button" data-mode="direct">직접 입금</button>
+            <button type="button" data-mode="checkout">결제 URL</button>
+          </div>
+
+          <label>
+            판매자명
+            <input name="sellerName" value="Brief30" />
+          </label>
+          <label>
+            공개 URL
+            <input name="publicUrl" placeholder="https://your-public-url/" />
+          </label>
+          <label>
+            회신 이메일
+            <input name="supportEmail" inputmode="email" placeholder="seller@domain.kr" />
+          </label>
+          <label>
+            입금/결제 안내
+            <input name="bankAccount" placeholder="은행명 계좌번호 예금주" />
+          </label>
+          <label>
+            연락 문구
+            <input name="contactLine" placeholder="문의: seller@domain.kr" />
+          </label>
+          <label>
+            납품 시간
+            <input name="deliveryWindow" value="입금 확인 후 24시간 이내" />
+          </label>
+          <label>
+            Team checkout
+            <input name="teamUrl" placeholder="https://pay.domain.kr/team" />
+          </label>
+          <label>
+            Workfix checkout
+            <input name="workfixUrl" placeholder="https://pay.domain.kr/workfix" />
+          </label>
+          <label>
+            Self checkout
+            <input name="buyUrl" placeholder="https://pay.domain.kr/self" />
+          </label>
+          <label>
+            Setup checkout
+            <input name="setupUrl" placeholder="https://pay.domain.kr/setup" />
+          </label>
+          <label>
+            Service checkout
+            <input name="serviceUrl" placeholder="https://pay.domain.kr/service" />
+          </label>
+          <label>
+            Campaign URL
+            <input name="testerUrl" placeholder="https://your-public-url/campaign/index.html" />
+          </label>
+        </form>
+
+        <section class="outputStack" aria-label="Generated setup output">
+          <article>
+            <div>
+              <h2>1. 셋업 명령</h2>
+              <button type="button" data-copy="#setupCommand">복사</button>
+            </div>
+            <pre id="setupCommand"></pre>
+          </article>
+          <article>
+            <div>
+              <h2>2. Live 발송 게이트</h2>
+              <button type="button" data-copy="#liveCommands">복사</button>
+            </div>
+            <pre id="liveCommands"></pre>
+          </article>
+          <article>
+            <div>
+              <h2>3. 주문 설정</h2>
+              <button type="button" data-copy="#orderConfig">복사</button>
+            </div>
+            <pre id="orderConfig"></pre>
+          </article>
+          <article>
+            <div>
+              <h2>4. 결제 URL 설정</h2>
+              <button type="button" data-copy="#marketingConfig">복사</button>
+            </div>
+            <pre id="marketingConfig"></pre>
+          </article>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

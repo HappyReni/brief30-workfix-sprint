@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f766e'/%3E%3Cpath d='M18 16h28v6H18zm0 11h18v5H18zm0 10h28v5H18zm0 10h14v5H18z' fill='%23fffaf0'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.js"></script>
+    <title>Brief30 Evidence Desk</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <a href="../hub/index.html">Brief30</a>
+      <nav aria-label="Evidence desk links">
+        <a href="../paid/index.html?offer=team">Proof</a>
+        <a href="../money-day/index.html">Money Day</a>
+        <a href="../operator/index.html">Operator</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Payment proof</p>
+          <h1>입금 문자를 매출 CSV로 바꿉니다</h1>
+          <p>실제 입금 알림, 카드 영수증, 송금 메모를 붙여넣어 병합 가능한 행과 보완해야 할 행을 분리합니다.</p>
+        </div>
+        <aside>
+          <span id="readyBadge">증거 대기</span>
+          <strong id="priorityText">실제 결제 증거만 병합</strong>
+        </aside>
+      </section>
+
+      <section class="console">
+        <form id="evidenceForm" class="inputPanel">
+          <div class="quickActions">
+            <button id="loadSamples" type="button">샘플 불러오기</button>
+            <button id="clearText" type="button">비우기</button>
+          </div>
+          <div class="split">
+            <label>
+              기준일
+              <input name="date" type="date" />
+            </label>
+            <label>
+              월
+              <input name="month" placeholder="2026-05" />
+            </label>
+          </div>
+          <label>
+            결제수단 기본값
+            <input name="paymentRoute" placeholder="은행 이체, 카드, 결제 링크 등" />
+          </label>
+          <label>
+            결제 증거 텍스트
+            <textarea id="paymentText" spellcheck="false" placeholder="2026-05-22 김PM 300,000원 B30-TEAM-01 team"></textarea>
+          </label>
+        </form>
+
+        <section class="outputPanel">
+          <div class="metricGrid" id="metricGrid"></div>
+          <section class="priority" id="priorityPanel"></section>
+
+          <div class="columns">
+            <section>
+              <h2>병합 가능</h2>
+              <div id="readyRows" class="stack"></div>
+            </section>
+            <section>
+              <h2>보완 필요</h2>
+              <div id="reviewRows" class="stack"></div>
+            </section>
+          </div>
+
+          <section class="exportGrid">
+            <article>
+              <div>
+                <h2>결제 증거 CSV</h2>
+                <button type="button" data-copy="#evidenceCsv">복사</button>
+              </div>
+              <pre id="evidenceCsv"></pre>
+            </article>
+            <article>
+              <div>
+                <h2>다음 명령</h2>
+                <button type="button" data-copy="#commandText">복사</button>
+              </div>
+              <pre id="commandText"></pre>
+            </article>
+            <article class="wide">
+              <div>
+                <h2>전체 증거 팩</h2>
+                <button type="button" data-copy="#fullText">복사</button>
+              </div>
+              <pre id="fullText"></pre>
+            </article>
+          </section>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

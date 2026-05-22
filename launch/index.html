@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23d64b34'/%3E%3Cpath d='M15 19h34v6H15zm0 13h24v6H15zm0 13h31v6H15z' fill='%23fffaf0'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.js"></script>
+    <title>Brief30 Direct Sales Sprint</title>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <nav>
+          <strong>Brief30 sprint</strong>
+          <a href="../preflight/index.html">Preflight</a>
+          <a href="../hub/index.html">Hub</a>
+          <a href="../outbox/index.html">Outbox</a>
+          <a href="../replydesk/index.html">Replies</a>
+          <a href="../prospecting/index.html">Prospecting</a>
+          <a href="../operator/index.html">Operator</a>
+          <a href="../diagnostic/index.html">Diagnostic</a>
+          <a href="../campaign/index.html">Campaign</a>
+          <a href="../order/index.html?offer=setup">Order</a>
+          <a href="../proof/index.html">Proof</a>
+        </nav>
+        <section class="heroGrid">
+          <div>
+            <p class="eyebrow">No marketplace. Direct revenue.</p>
+            <h1>14일 안에 월 30만원 루프를 숫자로 만든다</h1>
+            <p class="lede">
+              직접 DM, 기존 네트워크, 커뮤니티 피드백만으로 테스트합니다.
+              기본 목표는 300,000원 팀 스프린트 1건, 매일 할 일은 10명 발송과 결제 질문 1회입니다.
+            </p>
+          </div>
+          <figure class="proofFrame">
+            <img src="../marketing/brief30-preview.png" alt="Brief30 app preview" />
+            <figcaption>보내는 말보다 Before/After 화면을 먼저 보여줍니다.</figcaption>
+          </figure>
+        </section>
+      </header>
+
+      <section class="progressBand">
+        <label>
+          <span>현재 확정 매출</span>
+          <input id="paidInput" min="0" step="1000" type="number" />
+        </label>
+        <div class="progressTrack" aria-label="Revenue progress">
+          <div id="progressFill"></div>
+        </div>
+        <div class="syncBox">
+          <span id="syncStatus">Operator paid ledger 없음</span>
+          <button id="syncPaid" type="button">Ledger sync</button>
+        </div>
+        <button id="exportSprint" type="button">CSV Export</button>
+        <button id="resetSprint" type="button">Reset</button>
+      </section>
+
+      <section class="kpiGrid" id="kpiGrid" aria-label="Sprint metrics"></section>
+
+      <section class="workGrid">
+        <article class="panel taskPanel">
+          <div class="panelHead">
+            <div>
+              <p class="eyebrow">Daily execution</p>
+              <h2>오늘 할 일</h2>
+            </div>
+            <select id="daySelect"></select>
+          </div>
+          <div id="taskList"></div>
+        </article>
+
+        <article class="panel messagePanel">
+          <div class="panelHead">
+            <div>
+              <p class="eyebrow">Copy and send</p>
+              <h2>채널별 문안</h2>
+            </div>
+            <button id="copyMessage" type="button">복사</button>
+          </div>
+          <div class="formGrid">
+            <label>
+              <span>채널</span>
+              <select id="channelSelect"></select>
+            </label>
+            <label>
+              <span>대상</span>
+              <select id="personaSelect"></select>
+            </label>
+            <label>
+              <span>오퍼</span>
+              <select id="offerSelect"></select>
+            </label>
+            <label>
+              <span>Diagnostic/Proof URL</span>
+              <input id="proofUrl" />
+            </label>
+            <label>
+              <span>Order URL</span>
+              <input id="orderUrl" />
+            </label>
+          </div>
+          <pre id="messageOutput"></pre>
+          <p class="channelGuard" id="channelDetail"></p>
+        </article>
+      </section>
+
+      <section class="channelDeck" id="channelDeck" aria-label="Direct sales channels"></section>
+
+      <section class="rules">
+        <article>
+          <strong>매출 인정 기준</strong>
+          <p>운영판 Paid ledger에 금액, 구매자, 주문/입금 근거가 있어야 매출로 셉니다.</p>
+        </article>
+        <article>
+          <strong>보안 기준</strong>
+          <p>구매자 메모는 회사명, 고객명, 개인정보, 계약 정보를 지우고 intake로 받습니다.</p>
+        </article>
+        <article>
+          <strong>피벗 기준</strong>
+          <p>결과물은 좋아하지만 툴을 싫어하면 99,000원 대행팩을 먼저 팝니다.</p>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>

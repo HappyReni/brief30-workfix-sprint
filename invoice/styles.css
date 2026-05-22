@@ -1,0 +1,291 @@
+:root {
+  --ink: #20251f;
+  --muted: #687263;
+  --paper: #f3efe2;
+  --panel: #fffdf5;
+  --line: rgba(32, 37, 31, 0.15);
+  --teal: #0f766e;
+  --red: #d64b34;
+  --gold: #bd8917;
+  color: var(--ink);
+  background: #e5ebe1;
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+  font: inherit;
+}
+
+.shell {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.hero {
+  min-height: 70vh;
+  border-radius: 8px;
+  padding: 22px;
+  background:
+    linear-gradient(115deg, rgba(15, 118, 110, 0.14), transparent 42%),
+    linear-gradient(0deg, rgba(255, 253, 245, 0.88), rgba(255, 253, 245, 0.88)),
+    url("../operator/payment-ledger-preview.png") center / cover;
+}
+
+nav,
+nav div,
+.buttonRow,
+.sectionHead,
+.summaryBand,
+.heroGrid,
+.shareBand {
+  display: flex;
+  gap: 12px;
+}
+
+nav {
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav a {
+  color: var(--ink);
+  font-weight: 900;
+}
+
+.heroGrid {
+  min-height: calc(70vh - 64px);
+  align-items: end;
+  justify-content: space-between;
+  padding-top: 72px;
+}
+
+.heroGrid > div {
+  max-width: 710px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--red);
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 4.8rem;
+  font-weight: 900;
+  line-height: 1.02;
+  letter-spacing: 0;
+  word-break: keep-all;
+}
+
+h2 {
+  margin-bottom: 0;
+  font-size: 1.12rem;
+}
+
+.hero p,
+.shareBand p {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.primary,
+.secondary,
+.ghost {
+  min-height: 42px;
+  border: 0;
+  border-radius: 8px;
+  padding: 0 15px;
+  align-items: center;
+  justify-content: center;
+  display: inline-flex;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.primary {
+  color: #fff;
+  background: var(--teal);
+}
+
+.secondary {
+  color: #fff;
+  background: var(--ink);
+}
+
+.ghost {
+  border: 1px solid var(--line);
+  color: var(--ink);
+  background: #eef2ea;
+}
+
+.slip,
+.summaryBand article,
+.copyGrid article,
+.shareBand {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 253, 245, 0.93);
+}
+
+.slip {
+  width: min(360px, 100%);
+  padding: 22px;
+}
+
+.slip > span {
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 6px 10px;
+  color: #fff;
+  background: var(--red);
+  font-size: 0.76rem;
+  font-weight: 900;
+}
+
+.slip > span.isReady {
+  background: var(--teal);
+}
+
+dl {
+  display: grid;
+  gap: 12px;
+  margin: 18px 0 0;
+}
+
+dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 10px;
+}
+
+dt,
+.summaryBand span {
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+dd {
+  margin: 0;
+  text-align: right;
+  font-weight: 900;
+}
+
+.summaryBand {
+  display: grid;
+  grid-template-columns: 0.86fr 1fr;
+  margin: 14px 0;
+}
+
+.summaryBand article {
+  min-height: 128px;
+  padding: 18px;
+}
+
+.summaryBand strong {
+  display: block;
+  margin-top: 12px;
+  font-size: 1.28rem;
+  line-height: 1.35;
+}
+
+.copyGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.copyGrid article {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+}
+
+.sectionHead {
+  align-items: start;
+  justify-content: space-between;
+}
+
+pre {
+  overflow: auto;
+  min-height: 330px;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px;
+  color: #fffdf5;
+  background: #20251f;
+  font: 0.9rem/1.65 "SFMono-Regular", Consolas, monospace;
+  white-space: pre-wrap;
+}
+
+.shareBand {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  margin-top: 14px;
+  padding: 18px;
+}
+
+.shareBand pre {
+  grid-column: 1 / -1;
+  min-height: 260px;
+}
+
+@media (max-width: 840px) {
+  .shell {
+    padding: 16px;
+  }
+
+  h1 {
+    font-size: 2.65rem;
+  }
+
+  nav,
+  nav div,
+  .buttonRow,
+  .heroGrid,
+  .summaryBand,
+  .copyGrid,
+  .shareBand {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  .heroGrid {
+    min-height: auto;
+    padding-top: 56px;
+  }
+
+  .slip {
+    width: 100%;
+  }
+}

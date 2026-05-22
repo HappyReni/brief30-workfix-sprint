@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23d64b34'/%3E%3Cpath d='M16 18h32v6H16zm0 11h24v6H16zm0 11h32v6H16zm0 11h18v6H16z' fill='%23fffaf0'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="../marketing/config.js"></script>
+    <script src="../order/config.js"></script>
+    <script type="module" src="./app.js"></script>
+    <title>Brief30 Done-for-you Service</title>
+  </head>
+  <body>
+    <header class="hero">
+      <img src="../fulfillment/fulfillment-preview.png" alt="Brief30 fulfillment desk preview" />
+      <nav>
+        <strong>Brief30 service</strong>
+        <div>
+          <a href="../diagnostic/index.html">무료 진단</a>
+          <a href="../proof/index.html">결과 예시</a>
+          <a href="../order/index.html?offer=service">주문</a>
+        </div>
+      </nav>
+      <section class="heroCopy">
+        <p class="eyebrow">99,000 KRW done-for-you pack</p>
+        <h1>이번 주 보고서가 급하면 메모 3개만 보내세요</h1>
+        <p>
+          Brief30 대행팩은 익명화한 업무 메모를 받아 요약, 보고서, 회의록,
+          후속메일 포맷으로 정리해 24시간 안에 전달하는 고가 전환용 상품입니다.
+        </p>
+        <div class="heroActions">
+          <a class="primary" id="primaryCta" href="../order/index.html?offer=service">대행팩 요청</a>
+          <a class="secondary" href="../diagnostic/index.html">무료 진단</a>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <section class="mathBand" aria-label="Monthly revenue math">
+        <article>
+          <span>월 목표</span>
+          <strong>300,000원</strong>
+          <p>대행팩 4건이면 396,000원입니다.</p>
+        </article>
+        <article>
+          <span>처리 범위</span>
+          <strong>메모 3개</strong>
+          <p>주간보고, 회의록, 고객사 업데이트, 후속메일 중 필요한 형태로 정리합니다.</p>
+        </article>
+        <article>
+          <span>전달 기준</span>
+          <strong>24시간</strong>
+          <p>입금 확인과 익명 메모 수령 후 첫 결과물을 보냅니다.</p>
+        </article>
+      </section>
+
+      <section class="workflowBand" aria-labelledby="workflow-title">
+        <div class="sectionLead">
+          <p class="eyebrow">Service workflow</p>
+          <h2 id="workflow-title">툴 사용법 설명보다 결과물을 먼저 팝니다</h2>
+          <p>
+            가격 저항이 있으면 셀프툴로 낮추고, 시간이 없다는 답장이 오면
+            99,000원 대행팩으로 바로 닫습니다.
+          </p>
+        </div>
+        <div class="stepGrid">
+          <article>
+            <span>01</span>
+            <h3>익명 메모 수령</h3>
+            <p>회사명, 고객명, 실명, 계약 금액을 지운 메모만 받습니다.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Brief30 초안 생성</h3>
+            <p>요약, 보고서, 액션아이템, 후속메일 뼈대를 뽑습니다.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>사람 손으로 정리</h3>
+            <p>톤, 리스크, 누락 액션을 다듬어 바로 보낼 수 있게 만듭니다.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>반복 포맷 전달</h3>
+            <p>다음 주에도 재사용할 제목, 섹션, 체크리스트를 같이 보냅니다.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="closeBand" aria-labelledby="close-title">
+        <div>
+          <p class="eyebrow">Close the deal</p>
+          <h2 id="close-title">관심 답장이 오면 바로 결제 요청으로 보냅니다</h2>
+          <p id="paymentState">결제 루트 확인 중</p>
+        </div>
+        <div class="closePanel">
+          <div class="buttonRow">
+            <a class="primary" id="orderCta" href="../order/index.html?offer=service">직접 주문</a>
+            <a class="secondary dark" id="closeCta" href="../closing/index.html?offer=service">클로징 문안</a>
+            <a class="secondary dark" id="intakeCta" href="../intake/index.html?offer=service">Intake</a>
+            <button class="secondary dark" id="copyShare" type="button">공유 문안 복사</button>
+          </div>
+          <pre id="shareText"></pre>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

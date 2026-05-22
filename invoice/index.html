@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2319271f'/%3E%3Cpath d='M16 16h32v6H16zm0 12h24v5H16zm0 11h32v5H16zm0 11h18v5H16z' fill='%23fffaf0'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="../order/config.js"></script>
+    <script type="module" src="./app.js"></script>
+    <title>Brief30 Invoice</title>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <nav>
+          <strong>Brief30 invoice</strong>
+          <div>
+            <a href="../team/index.html">팀 상품</a>
+            <a href="../team/sample.html">샘플</a>
+            <a href="../order/index.html?offer=team">주문</a>
+          </div>
+        </nav>
+        <section class="heroGrid">
+          <div>
+            <p class="eyebrow">Approval to payment</p>
+            <h1 id="title">300,000원 팀 브리핑 스프린트</h1>
+            <p>
+              내부 승인 뒤 바로 보낼 수 있는 견적, 결제 요청, 결제 확인 요청을 한 화면에서 정리합니다.
+              실제 결제 확인 전에는 매출로 기록하지 않습니다.
+            </p>
+            <div class="buttonRow">
+              <a class="primary" id="order" href="../order/index.html?offer=team">주문 열기</a>
+              <a class="secondary" id="intake" href="../intake/index.html?offer=team">Intake</a>
+              <a class="secondary" id="paid" href="../paid/index.html?offer=team">증빙 작성</a>
+              <a class="secondary" id="sample" href="../team/sample.html">샘플</a>
+            </div>
+          </div>
+          <aside class="slip" aria-label="Invoice summary">
+            <span id="status">결제 안내 입력 전</span>
+            <dl>
+              <div>
+                <dt>수신</dt>
+                <dd id="buyer"></dd>
+              </div>
+              <div>
+                <dt>금액</dt>
+                <dd id="amount"></dd>
+              </div>
+              <div>
+                <dt>주문번호</dt>
+                <dd id="ref"></dd>
+              </div>
+              <div>
+                <dt>기한</dt>
+                <dd id="due"></dd>
+              </div>
+            </dl>
+          </aside>
+        </section>
+      </header>
+
+      <section class="summaryBand" aria-label="Payment details">
+        <article>
+          <span>전달 예정</span>
+          <strong id="delivery"></strong>
+        </article>
+        <article>
+          <span>결제 안내</span>
+          <strong id="route"></strong>
+        </article>
+      </section>
+
+      <section class="copyGrid" aria-label="Invoice copy blocks">
+        <article>
+          <div class="sectionHead">
+            <div>
+              <p class="eyebrow">Quote</p>
+              <h2>견적/청구 메모</h2>
+            </div>
+            <button class="ghost" data-copy="#quote" type="button">복사</button>
+          </div>
+          <pre id="quote"></pre>
+        </article>
+
+        <article>
+          <div class="sectionHead">
+            <div>
+              <p class="eyebrow">Payment</p>
+              <h2>결제 요청</h2>
+            </div>
+            <button class="ghost" data-copy="#payment" type="button">복사</button>
+          </div>
+          <pre id="payment"></pre>
+        </article>
+
+        <article>
+          <div class="sectionHead">
+            <div>
+              <p class="eyebrow">Proof</p>
+              <h2>증빙 요청</h2>
+            </div>
+            <button class="ghost" data-copy="#proof" type="button">복사</button>
+          </div>
+          <pre id="proof"></pre>
+        </article>
+      </section>
+
+      <section class="shareBand">
+        <div>
+          <p class="eyebrow">Send this</p>
+          <h2>한 번에 복사해서 구매자에게 보냅니다</h2>
+          <p>견적, 결제 요청, 증빙 요청을 이어 붙인 발송문입니다.</p>
+        </div>
+        <button class="primary" data-copy="#share" type="button">전체 문안 복사</button>
+        <pre id="share"></pre>
+      </section>
+    </main>
+  </body>
+</html>

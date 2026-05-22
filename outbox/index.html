@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23d64b34'/%3E%3Cpath d='M15 18h34v6H15zm0 11h22v6H15zm0 11h31v6H15zm0 11h15v5H15z' fill='%23fffaf0'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.js"></script>
+    <title>Brief30 Daily Outbox</title>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <nav>
+          <strong>Brief30 outbox</strong>
+          <a href="../preflight/index.html">Preflight</a>
+          <a href="../hub/index.html">Hub</a>
+          <a href="../replydesk/index.html">Replies</a>
+          <a href="../operator/index.html">Operator</a>
+          <a href="../closing/index.html">Close</a>
+        </nav>
+        <section class="heroGrid">
+          <div>
+            <p class="eyebrow">10 warm sends today</p>
+            <h1>발송할 문안까지 한 줄로 만든다</h1>
+            <p>
+              공개 URL과 대상 이름만 넣으면 오늘 보낼 10개 메시지, 운영판 import CSV,
+              후속 기준이 같이 나옵니다. 보내지 않은 문안은 매출이 아닙니다.
+            </p>
+          </div>
+          <figure>
+            <img src="../marketing/brief30-preview.png" alt="Brief30 app preview" />
+          </figure>
+        </section>
+      </header>
+
+      <section class="kpiGrid" id="kpiGrid" aria-label="Outbox metrics"></section>
+
+      <section class="workspace">
+        <form class="panel controlPanel" id="outboxForm">
+          <div class="panelHead">
+            <div>
+              <p class="eyebrow">Batch input</p>
+              <h2>오늘 발송 세트</h2>
+            </div>
+            <button class="ghost" id="resetSent" type="button">Sent 초기화</button>
+          </div>
+          <label>
+            <span>공개 루트 URL</span>
+            <input name="publicUrl" value="https://your-site.example.com/" />
+          </label>
+          <label>
+            <span>세그먼트</span>
+            <select name="segment"></select>
+          </label>
+          <label>
+            <span>소스</span>
+            <select name="source"></select>
+          </label>
+          <label>
+            <span>오퍼</span>
+            <select name="offer">
+              <option value="team">300,000원 팀 브리핑 스프린트</option>
+              <option value="setup">49,000원 셋업팩</option>
+              <option value="service">99,000원 대행팩</option>
+              <option value="self">19,000원 셀프툴</option>
+            </select>
+          </label>
+          <label>
+            <span>발송 수</span>
+            <input name="count" min="3" max="30" step="1" type="number" value="10" />
+          </label>
+          <label>
+            <span>대상 이름/호칭</span>
+            <textarea name="names">OO님
+팀장님
+대표님
+PM님
+실무자님
+창업자님
+리드님
+매니저님
+컨설턴트님
+프리랜서님</textarea>
+          </label>
+          <div class="buttonRow">
+            <button class="primary" id="copyAll" type="button">전체 문안 복사</button>
+            <button class="secondary" id="markAllSent" type="button">전체 보냄 체크</button>
+            <button class="secondary" id="copyCsv" type="button">운영판 CSV 복사</button>
+          </div>
+        </form>
+
+        <section class="panel messagePanel">
+          <div class="panelHead">
+            <div>
+              <p class="eyebrow">Send queue</p>
+              <h2>복사하고 보낸 것만 체크</h2>
+            </div>
+            <a class="ghostLink" href="../operator/index.html">운영판 열기</a>
+          </div>
+          <div class="messageList" id="messageList"></div>
+        </section>
+      </section>
+
+      <section class="panel handoffPanel">
+        <div class="panelHead">
+          <div>
+            <p class="eyebrow">Operator handoff</p>
+            <h2>발송 후 붙여넣기</h2>
+          </div>
+          <button class="ghost" id="downloadCsv" type="button">CSV 저장</button>
+        </div>
+        <p class="handoffNote">보냄 체크한 항목만 운영판 CSV에 들어갑니다.</p>
+        <pre id="operatorCsv"></pre>
+      </section>
+    </main>
+  </body>
+</html>

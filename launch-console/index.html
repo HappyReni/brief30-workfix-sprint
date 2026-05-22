@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../order/config.js"></script>
+    <script src="../marketing/config.js"></script>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.js"></script>
+    <title>Brief30 Launch Console</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <a href="../hub/index.html">Brief30</a>
+      <nav aria-label="Launch console links">
+        <a href="../payment-setup/index.html">Payment</a>
+        <a href="../contact-desk/index.html">Contacts</a>
+        <a href="../money-day/index.html">Money Day</a>
+        <a href="../evidence-desk/index.html">Evidence</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Launch console</p>
+          <h1>월 30까지 오늘 할 일을 하나로 좁힙니다</h1>
+          <p>결제 루트, 따뜻한 후보, 입금 증거를 한 번에 보고 다음 행동과 명령만 남깁니다.</p>
+        </div>
+        <aside>
+          <span id="nextLevel">대기</span>
+          <strong id="nextLabel">상태 계산 중</strong>
+          <p id="nextDetail"></p>
+        </aside>
+      </section>
+
+      <section class="console">
+        <form id="launchForm" class="inputPanel">
+          <div class="split">
+            <label>
+              공개 URL
+              <input name="publicUrl" placeholder="https://your-public-url/" />
+            </label>
+            <label>
+              월
+              <input name="month" placeholder="2026-05" />
+            </label>
+          </div>
+          <label>
+            결제수단 기본값
+            <input name="paymentRoute" placeholder="은행 이체, 카드, 결제 링크 등" />
+          </label>
+          <label>
+            따뜻한 후보
+            <textarea id="contactText" spellcheck="false"></textarea>
+          </label>
+          <label>
+            이미 보낸 운영 CSV
+            <textarea id="ledgerText" spellcheck="false" placeholder="name,segment,source,offer,status,next_touch,note"></textarea>
+          </label>
+          <label>
+            결제 증거
+            <textarea id="paymentText" spellcheck="false" placeholder="2026-05-22 김PM 300,000원 B30-TEAM-01 team"></textarea>
+          </label>
+          <div class="quickActions">
+            <button id="loadContacts" type="button">후보 샘플</button>
+            <button id="clearAll" type="button">비우기</button>
+          </div>
+        </form>
+
+        <section class="outputPanel">
+          <div class="metricGrid" id="metricGrid"></div>
+
+          <div class="columns">
+            <section>
+              <h2>체크리스트</h2>
+              <div id="checklist" class="stack"></div>
+            </section>
+            <section>
+              <h2>바로 열기</h2>
+              <div id="linkList" class="stack linkList"></div>
+            </section>
+          </div>
+
+          <section class="closePanel" aria-labelledby="close-title">
+            <div>
+              <p class="eyebrow">First close</p>
+              <h2 id="close-title">1건 클로징 패킷</h2>
+              <strong id="closeTitle">후보 대기</strong>
+              <p id="closeDetail"></p>
+              <div class="closeLinks" id="closeLinks"></div>
+            </div>
+            <article>
+              <div>
+                <h2>발송 문안</h2>
+                <button type="button" data-copy="#closeCopy">복사</button>
+              </div>
+              <pre id="closeCopy"></pre>
+            </article>
+          </section>
+
+          <section class="exportGrid">
+            <article>
+              <div>
+                <h2>다음 명령</h2>
+                <button type="button" data-copy="#commands">복사</button>
+              </div>
+              <pre id="commands"></pre>
+            </article>
+            <article>
+              <div>
+                <h2>공유 문안</h2>
+                <button type="button" data-copy="#shareCopy">복사</button>
+              </div>
+              <pre id="shareCopy"></pre>
+            </article>
+          </section>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

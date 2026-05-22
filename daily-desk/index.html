@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.js"></script>
+    <title>Brief30 Daily Desk</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <a href="../hub/index.html">Brief30</a>
+      <nav aria-label="Daily desk links">
+        <a href="../launch-console/index.html">런치 콘솔</a>
+        <a href="../outbox/index.html">Outbox</a>
+        <a href="../followup-desk/index.html">후속</a>
+        <a href="../money-day/index.html">머니데이</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Daily desk</p>
+          <h1>오늘 보낼 수와 내일 후속까지 숫자로 잠급니다</h1>
+          <p>운영 CSV를 붙여넣으면 매출 gap, 기대 파이프라인, 오늘 발송 수, 복사 문안과 운영 CSV가 나옵니다.</p>
+        </div>
+        <aside>
+          <span id="nextLevel">대기</span>
+          <strong id="nextLabel">상태 계산 중</strong>
+          <p id="nextDetail"></p>
+        </aside>
+      </section>
+
+      <section class="workspace">
+        <form id="dailyForm" class="inputPanel">
+          <div class="split">
+            <label>
+              공개 URL
+              <input name="publicUrl" placeholder="https://your-public-url/" />
+            </label>
+            <label>
+              기준일
+              <input name="date" type="date" />
+            </label>
+          </div>
+          <label>
+            결제 루트
+            <input name="paymentRoute" placeholder="은행명 계좌번호 예금주 또는 결제 URL" />
+          </label>
+          <div class="split triple">
+            <label>
+              Focus
+              <select name="focus">
+                <option value="team">team</option>
+                <option value="service">service</option>
+                <option value="setup">setup</option>
+                <option value="mixed">mixed</option>
+              </select>
+            </label>
+            <label>
+              남은 일수
+              <input name="days" min="1" max="90" value="14" type="number" />
+            </label>
+            <label>
+              생성 수
+              <input name="count" min="1" max="80" placeholder="auto" type="number" />
+            </label>
+          </div>
+          <label>
+            대상 이름/호칭
+            <textarea id="namesText" spellcheck="false" placeholder="김팀장&#10;이PM&#10;박대표"></textarea>
+          </label>
+          <label>
+            운영 CSV
+            <textarea id="ledgerText" spellcheck="false" placeholder="name,segment,source,offer,status,next_touch,note"></textarea>
+          </label>
+          <div class="quickActions">
+            <button id="loadSample" type="button">샘플 불러오기</button>
+            <button id="clearAll" type="button">비우기</button>
+          </div>
+        </form>
+
+        <section class="outputPanel">
+          <div class="metricGrid" id="metricGrid"></div>
+          <section>
+            <h2>체크리스트</h2>
+            <div id="checklist" class="checklist"></div>
+          </section>
+          <section>
+            <h2>오늘 보낼 문안</h2>
+            <div id="sendCards" class="cardGrid"></div>
+          </section>
+          <section class="exportGrid">
+            <article>
+              <div>
+                <h2>운영 CSV</h2>
+                <button type="button" data-copy="#operatorCsv">복사</button>
+              </div>
+              <pre id="operatorCsv"></pre>
+            </article>
+            <article>
+              <div>
+                <h2>다음 명령</h2>
+                <button type="button" data-copy="#commandBlock">복사</button>
+              </div>
+              <pre id="commandBlock"></pre>
+            </article>
+            <article class="wide">
+              <div>
+                <h2>전체 일일 팩</h2>
+                <button type="button" data-copy="#fullText">복사</button>
+              </div>
+              <pre id="fullText"></pre>
+            </article>
+          </section>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

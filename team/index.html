@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f766e'/%3E%3Cpath d='M14 17h36v6H14zm0 12h25v6H14zm0 12h36v6H14zm0 12h18v5H14z' fill='%23fffaf0'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="../marketing/config.js"></script>
+    <script src="../order/config.js"></script>
+    <script type="module" src="./app.js"></script>
+    <title>Brief30 Team Sprint</title>
+  </head>
+  <body>
+    <header class="hero">
+      <img src="../operator/payment-ledger-preview.png" alt="Brief30 operator payment board preview" />
+      <nav>
+        <strong>Brief30 team sprint</strong>
+        <div>
+          <a href="../hub/index.html">허브</a>
+          <a href="./sample.html">샘플 산출물</a>
+          <a href="../approval/index.html?offer=team">승인 메모</a>
+          <a href="../invoice/index.html?offer=team">청구서</a>
+          <a href="../service/index.html">99,000원 대안</a>
+          <a href="../order/index.html?offer=team">주문</a>
+        </div>
+      </nav>
+      <section class="heroCopy">
+        <p class="eyebrow">300,000 KRW team briefing sprint</p>
+        <h1>팀 보고가 매주 밀리면 한 건으로 닫으세요</h1>
+        <p>
+          Brief30 팀 브리핑 스프린트는 익명화한 업무 메모 최대 10개를 받아
+          주간 브리핑, 회의록, 리스크, 후속 액션 보드로 묶는 4주짜리 팀 정리 상품입니다.
+        </p>
+        <div class="heroActions">
+          <a class="primary" id="primaryCta" href="../order/index.html?offer=team">팀 스프린트 주문</a>
+          <a class="secondary" id="sampleCta" href="./sample.html">샘플 산출물 보기</a>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <section class="mathBand" aria-label="Team sprint economics">
+        <article>
+          <span>가격</span>
+          <strong>300,000원</strong>
+          <p>월 매출 목표를 한 번의 팀 주문으로 채우는 고가 오퍼입니다.</p>
+        </article>
+        <article>
+          <span>범위</span>
+          <strong>메모 10개</strong>
+          <p>주간보고, 회의록, 리스크, 후속 액션을 팀 단위로 정리합니다.</p>
+        </article>
+        <article>
+          <span>납기</span>
+          <strong>4주</strong>
+          <p>3영업일 내 1차 납품 후 4주 동안 브리핑 리듬을 맞춥니다.</p>
+        </article>
+      </section>
+
+      <section class="approvalBand" aria-labelledby="approval-title">
+        <div class="sectionLead">
+          <p class="eyebrow">Approval ready</p>
+          <h2 id="approval-title">결재권자가 보는 질문만 남깁니다</h2>
+          <p>
+            팀 구매자는 기능 설명보다 범위, 보안 기준, 납기, 대체안이 필요합니다.
+            이 페이지는 내부 공유용으로 바로 보내도 흐름이 끊기지 않게 구성했습니다.
+          </p>
+        </div>
+        <div class="approvalGrid">
+          <article>
+            <span>01</span>
+            <h3>무엇을 받나</h3>
+            <p>업무 메모를 보고서, 회의록, 리스크, 액션 보드로 재구성합니다.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>무엇을 안 받나</h3>
+            <p>회사명, 고객명, 실명, 연락처, 계약 금액이 남은 원문은 받지 않습니다.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>언제 끝나나</h3>
+            <p>입금과 익명 메모 수령 후 3영업일 안에 1차 결과물을 보냅니다.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>부담되면</h3>
+            <p>팀 예산이 어렵다면 99,000원 대행팩으로 메모 3개부터 시작합니다.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="proofBand" aria-labelledby="proof-title">
+        <div>
+          <p class="eyebrow">Before sending</p>
+          <h2 id="proof-title">팀 자료는 익명화해서 넣습니다</h2>
+          <p>
+            민감한 이름을 지운 메모만 받아도 반복 보고의 구조는 충분히 잡힙니다.
+            원문이 아니라 패턴을 정리하는 방식입니다.
+          </p>
+        </div>
+        <div class="proofPanel">
+          <img src="../hub/hub-preview.png" alt="Brief30 public hub preview" />
+          <div class="proofChecklist">
+            <strong>제출 전 삭제 기준</strong>
+            <ul>
+              <li>회사명, 고객명, 실명, 연락처</li>
+              <li>계약 금액, 내부 코드, 계정 정보</li>
+              <li>그대로 노출되면 곤란한 원문 첨부</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="closeBand" aria-labelledby="close-title">
+        <div>
+          <p class="eyebrow">Close this order</p>
+          <h2 id="close-title">진행 가능하면 주문번호와 입금 확인만 남기면 됩니다</h2>
+          <p id="paymentState">결제 루트 확인 중</p>
+        </div>
+        <div class="closePanel">
+          <div class="buttonRow">
+            <a class="primary" id="orderCta" href="../order/index.html?offer=team">팀 주문</a>
+            <a class="secondary dark" id="closeCta" href="../closing/index.html?offer=team">결제 문안</a>
+            <a class="secondary dark" id="invoiceCta" href="../invoice/index.html?offer=team">청구서</a>
+            <a class="secondary dark" id="approvalCta" href="../approval/index.html?offer=team">승인 메모</a>
+            <a class="secondary dark" id="intakeCta" href="../intake/index.html?offer=team">Intake</a>
+            <a class="secondary dark" href="./sample.html">샘플</a>
+            <a class="secondary dark" id="fallbackCta" href="../service/index.html">99,000원 대안</a>
+            <button class="secondary dark" id="copyShare" type="button">공유 문안 복사</button>
+          </div>
+          <pre id="shareText"></pre>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

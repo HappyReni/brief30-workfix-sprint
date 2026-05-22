@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f766e'/%3E%3Cpath d='M17 18h30v5H17zm0 11h24v5H17zm0 11h30v5H17z' fill='%23fffaf0'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.js"></script>
+    <title>Brief30 Intake</title>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <nav>
+          <strong>Brief30 intake</strong>
+          <a href="../brief30.html">App demo</a>
+        </nav>
+        <section class="heroGrid">
+          <div>
+            <p class="eyebrow">After payment</p>
+            <h1>원문 메모를 안전하게 넘깁니다</h1>
+            <p>셋업팩/대행팩 구매 후 필요한 정보만 정리해서 전달하세요. 회사명, 고객명, 개인정보는 먼저 지우는 흐름입니다.</p>
+          </div>
+          <aside class="safetyBox">
+            <span>Privacy check</span>
+            <strong>3분</strong>
+            <p>익명화 후 전달</p>
+          </aside>
+        </section>
+      </header>
+
+      <section class="workspace">
+        <form class="panel controlPanel" id="intakeForm">
+          <div class="sectionHeader">
+            <p class="eyebrow">Buyer brief</p>
+            <h2>요청 정보</h2>
+          </div>
+          <label>
+            <span>구매자</span>
+            <input name="buyer" value="홍길동" />
+          </label>
+          <label>
+            <span>주문번호</span>
+            <input name="orderRef" value="B30-ORDER" />
+          </label>
+          <label>
+            <span>구매 오퍼</span>
+            <select name="offer">
+              <option value="setup">49,000원 셋업팩</option>
+              <option value="service">99,000원 대행팩</option>
+              <option value="team">300,000원 팀 브리핑 스프린트</option>
+              <option value="self">19,000원 셀프툴</option>
+            </select>
+          </label>
+          <label>
+            <span>원하는 결과물</span>
+            <select name="output">
+              <option>주간보고</option>
+              <option>회의록</option>
+              <option>고객사 업데이트</option>
+              <option>후속 메일</option>
+              <option>리스크 보고</option>
+            </select>
+          </label>
+          <label>
+            <span>보고 대상</span>
+            <input name="audience" value="팀장/고객사 담당자" />
+          </label>
+          <label>
+            <span>원하는 톤</span>
+            <input name="tone" value="간결하고 바로 보낼 수 있게" />
+          </label>
+          <label>
+            <span>반드시 포함할 내용</span>
+            <input name="must" value="숫자, 결정 필요 사항, 다음 액션" />
+          </label>
+          <label>
+            <span>마감 희망</span>
+            <input name="deadline" value="24시간 이내" />
+          </label>
+          <label>
+            <span>익명화한 원문 메모</span>
+            <textarea name="memo">회사명/고객명 제거 후 여기에 메모를 붙여넣어 주세요.</textarea>
+          </label>
+        </form>
+
+        <section class="panel outputPanel">
+          <div class="sectionHeader">
+            <p class="eyebrow">Send this</p>
+            <h2>전달 메시지</h2>
+          </div>
+          <div class="privacyList">
+            <label><input type="checkbox" /> 회사명 제거</label>
+            <label><input type="checkbox" /> 고객명 제거</label>
+            <label><input type="checkbox" /> 개인정보 제거</label>
+            <label><input type="checkbox" /> 계좌/계약정보 제거</label>
+          </div>
+          <pre id="intakePreview"></pre>
+          <div class="buttonRow">
+            <button class="primary" id="copyIntake" type="button">전달 메시지 복사</button>
+            <button class="secondary" id="downloadIntake" type="button">MD 저장</button>
+          </div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

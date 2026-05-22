@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2319271f'/%3E%3Cpath d='M17 16h30v6H17zm0 11h20v6H17zm0 11h30v6H17zm0 11h14v5H17z' fill='%23fffaf0'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="../order/config.js"></script>
+    <script type="module" src="./app.js"></script>
+    <title>Brief30 Approval Memo</title>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <nav>
+          <strong>Brief30 approval</strong>
+          <div>
+            <a href="../team/index.html">팀 상품</a>
+            <a href="../team/sample.html">샘플</a>
+            <a href="../invoice/index.html?offer=team">청구서</a>
+            <a href="../order/index.html?offer=team">주문</a>
+          </div>
+        </nav>
+        <section class="heroGrid">
+          <div>
+            <p class="eyebrow">Internal approval memo</p>
+            <h1 id="pageTitle">300,000원 팀 브리핑 스프린트 승인 메모</h1>
+            <p>
+              팀 구매자가 결재권자에게 바로 전달할 수 있는 승인 요청, 보안 기준,
+              다음 액션을 한 화면에서 만듭니다.
+            </p>
+          </div>
+          <aside class="summary" aria-label="Approval summary">
+            <span>금액</span>
+            <strong id="amount"></strong>
+            <dl>
+              <div>
+                <dt>주문번호</dt>
+                <dd id="ref"></dd>
+              </div>
+              <div>
+                <dt>승인기한</dt>
+                <dd id="due"></dd>
+              </div>
+              <div>
+                <dt>상태</dt>
+                <dd id="paymentState"></dd>
+              </div>
+            </dl>
+          </aside>
+        </section>
+      </header>
+
+      <section class="workGrid">
+        <form class="panel" id="approvalForm">
+          <div class="sectionHead">
+            <p class="eyebrow">Approval fields</p>
+            <h2>승인 정보</h2>
+          </div>
+          <label>
+            <span>상품</span>
+            <select name="offer">
+              <option value="team">300,000원 팀 브리핑 스프린트</option>
+              <option value="workfix">300,000원 Workfix Sprint</option>
+              <option value="service">99,000원 대행팩</option>
+              <option value="setup">49,000원 셋업팩</option>
+            </select>
+          </label>
+          <label>
+            <span>요청자</span>
+            <input name="buyer" placeholder="예: 김PM" />
+          </label>
+          <label>
+            <span>회사/팀</span>
+            <input name="company" placeholder="예: OO팀" />
+          </label>
+          <label>
+            <span>승인자</span>
+            <input name="approver" placeholder="예: 이팀장" />
+          </label>
+          <label>
+            <span>사용 목적</span>
+            <input name="useCase" placeholder="팀 주간보고/회의록 반복 정리" />
+          </label>
+          <div class="miniGrid">
+            <label>
+              <span>공유 인원</span>
+              <input name="people" min="1" max="30" type="number" />
+            </label>
+            <label>
+              <span>주당 시간</span>
+              <input name="hours" min="1" max="40" step="0.5" type="number" />
+            </label>
+          </div>
+          <div class="miniGrid">
+            <label>
+              <span>요청일</span>
+              <input name="date" type="date" />
+            </label>
+            <label>
+              <span>승인기한</span>
+              <input name="due" type="date" />
+            </label>
+          </div>
+          <label>
+            <span>결제/입금 안내</span>
+            <input name="payment" placeholder="승인 후 판매자가 실제 경로 확인" />
+          </label>
+        </form>
+
+        <section class="panel outputPanel">
+          <div class="sectionHead">
+            <div>
+              <p class="eyebrow">Forward this</p>
+              <h2>결재권자 전달 문안</h2>
+            </div>
+            <button data-copy="#forward" type="button">복사</button>
+          </div>
+          <pre id="forward"></pre>
+          <div class="linkRow">
+            <a id="teamCta" href="../team/index.html">팀 상품</a>
+            <a id="sampleCta" href="../team/sample.html">샘플</a>
+            <a id="orderCta" href="../order/index.html?offer=team">주문</a>
+            <a id="invoiceCta" href="../invoice/index.html?offer=team">청구서</a>
+            <a id="paidCta" href="../paid/index.html?offer=team">증빙</a>
+          </div>
+        </section>
+      </section>
+
+      <section class="outputGrid">
+        <article class="panel">
+          <div class="sectionHead compact">
+            <div>
+              <p class="eyebrow">Approval memo</p>
+              <h2>내부 승인 요청서</h2>
+            </div>
+            <button data-copy="#memo" type="button">복사</button>
+          </div>
+          <pre id="memo"></pre>
+        </article>
+        <article class="panel">
+          <div class="sectionHead compact">
+            <div>
+              <p class="eyebrow">Security</p>
+              <h2>보안/개인정보 메모</h2>
+            </div>
+            <button data-copy="#security" type="button">복사</button>
+          </div>
+          <pre id="security"></pre>
+        </article>
+        <article class="panel csvPanel">
+          <div class="sectionHead compact">
+            <div>
+              <p class="eyebrow">Operator update</p>
+              <h2>운영판 후속 상태</h2>
+            </div>
+            <button data-copy="#csv" type="button">CSV 복사</button>
+          </div>
+          <pre id="csv"></pre>
+          <p class="finePrint">승인 메모는 매출 증거가 아닙니다. 실제 입금/결제 증빙만 월 매출로 병합하세요.</p>
+        </article>
+        <article class="panel allPanel">
+          <div class="sectionHead compact">
+            <div>
+              <p class="eyebrow">One paste</p>
+              <h2>전체 승인팩</h2>
+            </div>
+            <button data-copy="#all" type="button">전체 복사</button>
+          </div>
+          <p class="finePrint">
+            전달 문안, 승인 요청서, 보안 기준을 한 번에 복사합니다.
+            내부 공유방에 그대로 붙여넣기 좋게 구성했습니다.
+          </p>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>

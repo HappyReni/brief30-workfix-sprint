@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f766e'/%3E%3Cpath d='M16 18h32v6H16zm0 11h22v6H16zm0 11h32v6H16zm0 11h14v5H16z' fill='%23fffaf0'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.js"></script>
+    <title>Brief30 Reply Desk</title>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <nav>
+          <strong>Brief30 reply desk</strong>
+          <a href="../outbox/index.html">Outbox</a>
+          <a href="../operator/index.html">Operator</a>
+          <a href="../closing/index.html?offer=setup">Close</a>
+          <a href="../fulfillment/index.html">Fulfill</a>
+        </nav>
+        <section class="heroGrid">
+          <div>
+            <p class="eyebrow">Reply to close</p>
+            <h1>답장 오면 결제 질문으로 좁힌다</h1>
+            <p>
+              관심, 가격, 보안, 대행 요청을 분류하고 바로 보낼 답장과 운영판 stage update CSV를 만듭니다.
+              답장이 따뜻하면 다음 메시지는 설명이 아니라 결제 요청입니다.
+            </p>
+          </div>
+          <aside class="ruleCard">
+            <span>Close rule</span>
+            <strong>관심 답장 1개당 결제 질문 1회</strong>
+            <p>애매하게 고마워하지 말고, 셋업팩/대행팩 여부를 묻습니다.</p>
+          </aside>
+        </section>
+      </header>
+
+      <section class="kpiGrid" id="kpiGrid" aria-label="Reply metrics"></section>
+
+      <section class="workspace">
+        <form class="panel controlPanel" id="replyForm">
+          <div class="panelHead">
+            <div>
+              <p class="eyebrow">Paste replies</p>
+              <h2>답장 묶음</h2>
+            </div>
+            <button class="ghost" id="loadSample" type="button">샘플</button>
+          </div>
+          <label>
+            <span>공개 루트 URL</span>
+            <input name="publicUrl" value="https://your-site.example.com/" />
+          </label>
+          <label>
+            <span>기본 오퍼</span>
+            <select name="offer">
+              <option value="setup">49,000원 셋업팩</option>
+              <option value="service">99,000원 대행팩</option>
+              <option value="team">300,000원 팀 브리핑 스프린트</option>
+              <option value="self">19,000원 셀프툴</option>
+            </select>
+          </label>
+          <label>
+            <span>답장 입력</span>
+            <textarea name="replies"></textarea>
+          </label>
+          <div class="buttonRow">
+            <button class="primary" id="copyAll" type="button">전체 답장 복사</button>
+            <button class="secondary" id="copyUpdateCsv" type="button">업데이트 CSV 복사</button>
+          </div>
+        </form>
+
+        <section class="panel resultPanel">
+          <div class="panelHead">
+            <div>
+              <p class="eyebrow">Triage queue</p>
+              <h2>답장별 다음 메시지</h2>
+            </div>
+            <a class="ghostLink" href="../closing/index.html?offer=setup">클로저 열기</a>
+          </div>
+          <div class="replyList" id="replyList"></div>
+        </section>
+      </section>
+
+      <section class="panel closePanel">
+        <div class="panelHead">
+          <div>
+            <p class="eyebrow">Close next</p>
+            <h2>결제 요청 후보</h2>
+          </div>
+          <button class="ghost" id="copyCloseCsv" type="button">클로징 CSV 복사</button>
+        </div>
+        <div class="closeQueue" id="closeQueue"></div>
+        <pre id="closeCsv"></pre>
+      </section>
+
+      <section class="panel csvPanel">
+        <div class="panelHead">
+          <div>
+            <p class="eyebrow">Operator update</p>
+            <h2>운영판에 붙여넣기</h2>
+          </div>
+          <button class="ghost" id="downloadCsv" type="button">CSV 저장</button>
+        </div>
+        <pre id="updateCsv"></pre>
+      </section>
+    </main>
+  </body>
+</html>

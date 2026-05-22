@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2319271f'/%3E%3Cpath d='M14 42h36v6H14zm2-26h12v20H16zm18 7h12v13H34z' fill='%23fffaf0'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.js"></script>
+    <title>Brief30 Money Day</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <a href="../hub/index.html">Brief30</a>
+      <nav aria-label="Money day links">
+        <a href="../payment-setup/index.html">결제 셋업</a>
+        <a href="../evidence-desk/index.html">증거 데스크</a>
+        <a href="../outbox/index.html">Outbox</a>
+        <a href="../operator/index.html">Operator</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Money day</p>
+          <h1>오늘 닫을 30만원 한 건만 남깁니다</h1>
+          <p>리드, 답장, 결제 증거를 붙여넣으면 병합 가능한 증거와 아직 보내야 할 돈 요청을 분리합니다.</p>
+        </div>
+        <aside>
+          <span id="paymentGate" data-ready="false">결제 루트 필요</span>
+          <strong id="priorityText">분석 대기</strong>
+        </aside>
+      </section>
+
+      <section class="console">
+        <form id="moneyForm" class="inputPanel">
+          <div class="quickActions">
+            <button id="loadSeed" type="button">기본 리드 불러오기</button>
+            <button id="loadSamples" type="button">샘플 답장/증거</button>
+          </div>
+          <label>
+            공개 URL
+            <input name="publicUrl" placeholder="https://your-public-url/" />
+          </label>
+          <label>
+            결제 루트
+            <input name="paymentRoute" placeholder="은행명 계좌번호 예금주 또는 결제 URL" />
+          </label>
+          <label>
+            회신 이메일
+            <input name="email" placeholder="seller@domain.kr" />
+          </label>
+          <div class="split">
+            <label>
+              기준일
+              <input name="date" type="date" />
+            </label>
+            <label>
+              월
+              <input name="month" placeholder="2026-05" />
+            </label>
+            <label>
+              신규 발송 수
+              <input name="count" min="1" max="80" value="20" type="number" />
+            </label>
+          </div>
+          <label>
+            리드/원장 CSV
+            <textarea id="ledgerText" spellcheck="false"></textarea>
+          </label>
+          <label>
+            답장 메모
+            <textarea id="replyText" spellcheck="false" placeholder="Lead 20 | 팀 예산 확인해볼게요."></textarea>
+          </label>
+          <label>
+            결제 증거 텍스트
+            <textarea id="paymentText" spellcheck="false" placeholder="2026-05-22 Lead 20 300,000원 B30-TEAM team"></textarea>
+          </label>
+        </form>
+
+        <section class="outputPanel">
+          <div class="metricGrid" id="metricGrid"></div>
+
+          <section class="teamClose" id="teamClose"></section>
+
+          <div class="columns">
+            <section>
+              <h2>지금 돈 요청</h2>
+              <div id="hotList" class="stack"></div>
+            </section>
+            <section>
+              <h2>후속 먼저</h2>
+              <div id="followupList" class="stack"></div>
+            </section>
+            <section>
+              <h2>신규 발송</h2>
+              <div id="sendList" class="stack"></div>
+            </section>
+          </div>
+
+          <section class="exportGrid">
+            <article>
+              <div>
+                <h2>병합 가능한 결제 증거 CSV</h2>
+                <button type="button" data-copy="#evidenceCsv">복사</button>
+              </div>
+              <pre id="evidenceCsv"></pre>
+            </article>
+            <article>
+              <div>
+                <h2>다음 명령 CSV</h2>
+                <button type="button" data-copy="#commandCsv">복사</button>
+              </div>
+              <pre id="commandCsv"></pre>
+            </article>
+            <article class="wide">
+              <div>
+                <h2>전체 Money Day Pack</h2>
+                <button type="button" data-copy="#fullText">복사</button>
+              </div>
+              <pre id="fullText"></pre>
+            </article>
+          </section>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

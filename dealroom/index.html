@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2319271f'/%3E%3Cpath d='M17 18h30v6H17zm0 11h20v6H17zm0 11h30v6H17z' fill='%23fffaf0'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="../order/config.js"></script>
+    <script src="../marketing/config.js"></script>
+    <script type="module" src="./app.js"></script>
+    <title>Brief30 Deal Room</title>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <nav>
+          <strong>Brief30 deal room</strong>
+          <a href="../hub/index.html">허브</a>
+          <a href="../proof/index.html">샘플</a>
+          <a href="../order/index.html?offer=team">주문</a>
+          <a href="../paid/index.html">증빙</a>
+        </nav>
+        <section class="heroGrid">
+          <div>
+            <p class="eyebrow">Personal close link</p>
+            <h1 id="roomTitle">전용 진행룸</h1>
+            <p id="roomSubtitle"></p>
+            <div class="heroActions">
+              <a class="primary" id="primaryCta" href="../order/index.html?offer=team">진행 확인</a>
+              <a class="secondary" id="diagnosticCta" href="../diagnostic/index.html">무료 진단</a>
+            </div>
+          </div>
+          <aside class="summaryCard">
+            <span id="buyerName"></span>
+            <strong id="amount"></strong>
+            <dl>
+              <div><dt>주문번호</dt><dd id="ref"></dd></div>
+              <div><dt>상품</dt><dd id="offerLabel"></dd></div>
+              <div><dt>결제상태</dt><dd id="routeLabel"></dd></div>
+            </dl>
+          </aside>
+        </section>
+      </header>
+
+      <section class="routeBand" aria-labelledby="route-title">
+        <div class="sectionHead">
+          <p class="eyebrow">Next steps</p>
+          <h2 id="route-title">샘플 확인부터 메모 전달까지</h2>
+        </div>
+        <div class="stepGrid" id="stepGrid"></div>
+      </section>
+
+      <section class="detailGrid">
+        <article class="panel">
+          <p class="eyebrow">Scope</p>
+          <h2>진행 범위</h2>
+          <dl class="infoList">
+            <div><dt>목적</dt><dd id="useCase"></dd></div>
+            <div><dt>전달물</dt><dd id="delivery"></dd></div>
+            <div><dt>결제 안내</dt><dd id="routeInstruction"></dd></div>
+          </dl>
+          <div class="buttonRow">
+            <a id="invoiceCta" href="../invoice/index.html?offer=team">청구서</a>
+            <a id="approvalCta" href="../approval/index.html?offer=team">승인 메모</a>
+            <a id="paidCta" href="../paid/index.html">증빙</a>
+            <a id="intakeCta" href="../intake/index.html">인테이크</a>
+          </div>
+          <p class="note">실제 결제 확인 전에는 매출 또는 완료 건으로 기록하지 않습니다.</p>
+        </article>
+
+        <article class="panel copyPanel">
+          <div class="copyHead">
+            <div>
+              <p class="eyebrow">Send this</p>
+              <h2>구매자 전달문</h2>
+            </div>
+            <button data-copy="#shareText" type="button">복사</button>
+          </div>
+          <pre id="shareText"></pre>
+        </article>
+      </section>
+
+      <section class="detailGrid">
+        <article class="panel copyPanel">
+          <div class="copyHead">
+            <div>
+              <p class="eyebrow">Security</p>
+              <h2>보안/익명화 기준</h2>
+            </div>
+            <button data-copy="#securityText" type="button">복사</button>
+          </div>
+          <pre id="securityText"></pre>
+        </article>
+
+        <article class="panel copyPanel">
+          <div class="copyHead">
+            <div>
+              <p class="eyebrow">Operator</p>
+              <h2>운영판 상태 업데이트</h2>
+            </div>
+            <button data-copy="#operatorCsv" type="button">CSV 복사</button>
+          </div>
+          <pre id="operatorCsv"></pre>
+          <p class="note">이 CSV는 답장 상태만 업데이트합니다. 결제 증빙 CSV가 아닙니다.</p>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f766e'/%3E%3Cpath d='M17 18h30v5H17zm0 11h20v5H17zm0 11h30v5H17z' fill='%23fffaf0'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.js"></script>
+    <title>Brief30 Fulfillment Desk</title>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <nav>
+          <strong>Brief30 fulfillment</strong>
+          <a href="../intake/index.html">Intake</a>
+          <a href="../aftercare/index.html">Aftercare</a>
+          <a href="../operator/index.html">Operator</a>
+        </nav>
+        <section class="heroGrid">
+          <div>
+            <p class="eyebrow">Paid buyer delivery</p>
+            <h1>입금 확인 후 바로 납품합니다</h1>
+            <p>49,000원 셋업팩과 99,000원 대행팩을 24시간 안에 처리하기 위한 seller 작업대입니다.</p>
+          </div>
+          <aside class="promiseBox">
+            <span>Delivery promise</span>
+            <strong>24h</strong>
+            <p>메일 + 결과물 + 다음 액션</p>
+          </aside>
+        </section>
+      </header>
+
+      <section class="workspace">
+        <form class="panel controlPanel" id="fulfillmentForm">
+          <div class="sectionHeader">
+            <p class="eyebrow">Buyer packet</p>
+            <h2>구매자 정보</h2>
+          </div>
+          <section class="importBox">
+            <label>
+              <span>Intake 붙여넣기</span>
+              <textarea id="intakePaste" placeholder="[Brief30 intake] 메시지"></textarea>
+            </label>
+            <button class="secondary" id="applyIntake" type="button">자동 채우기</button>
+          </section>
+          <label>
+            <span>구매자</span>
+            <input name="buyer" value="홍길동" />
+          </label>
+          <label>
+            <span>주문번호/결제증거</span>
+            <input name="orderRef" value="B30-20260522-PAID" />
+          </label>
+          <label>
+            <span>구매 오퍼</span>
+            <select name="offer">
+              <option value="setup">49,000원 셋업팩</option>
+              <option value="service">99,000원 대행팩</option>
+              <option value="self">19,000원 셀프툴</option>
+            </select>
+          </label>
+          <label>
+            <span>필요한 결과물</span>
+            <select name="output">
+              <option value="weekly">주간보고</option>
+              <option value="minutes">회의록</option>
+              <option value="client">고객사 업데이트</option>
+              <option value="followup">후속 메일</option>
+              <option value="risk">리스크 보고</option>
+            </select>
+          </label>
+          <label>
+            <span>보고 대상</span>
+            <input name="audience" value="팀장/고객사 담당자" />
+          </label>
+          <label>
+            <span>원하는 톤</span>
+            <input name="tone" value="간결하고 바로 보낼 수 있게" />
+          </label>
+          <label>
+            <span>반드시 포함할 내용</span>
+            <input name="must" value="숫자, 결정 필요 사항, 다음 액션" />
+          </label>
+          <label>
+            <span>마감 희망</span>
+            <input name="deadline" value="24시간 이내" />
+          </label>
+          <label>
+            <span>원문 메모</span>
+            <textarea name="memo">월: 가입 폼 이탈률 18% 확인
+화: 첫 화면 문구 수정 후 문의 2건 감소
+수: 결제 안내 메일 초안 작성
+목: 법무 검토 지연 리스크 발견
+금: 다음 주 A/B 테스트 진행 예정</textarea>
+          </label>
+        </form>
+
+        <section class="panel outputPanel">
+          <div class="sectionHeader">
+            <p class="eyebrow">Delivery outputs</p>
+            <h2>납품 패킷</h2>
+          </div>
+          <div class="tabs" id="tabs"></div>
+          <pre id="outputPreview"></pre>
+          <div class="buttonRow">
+            <button class="primary" id="copyOutput" type="button">현재 출력 복사</button>
+            <button class="secondary" id="downloadPacket" type="button">전체 패킷 저장</button>
+          </div>
+        </section>
+      </section>
+
+      <section class="panel checklistPanel">
+        <p class="eyebrow">Before sending</p>
+        <div class="checkGrid">
+          <label><input type="checkbox" /> 회사명/고객명 제거</label>
+          <label><input type="checkbox" /> 주문번호와 금액 확인</label>
+          <label><input type="checkbox" /> Brief30 파일 첨부</label>
+          <label><input type="checkbox" /> 운영판 Paid ledger 기록</label>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

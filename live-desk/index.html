@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2319271f'/%3E%3Cpath d='M14 16h36v6H14zm0 13h20v6H14zm0 13h36v6H14z' fill='%23fffaf0'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.js"></script>
+    <title>Brief30 Live Desk</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <a href="../hub/index.html">Brief30</a>
+      <nav aria-label="Live desk links">
+        <a href="../payment-setup/index.html">결제 셋업</a>
+        <a href="../money-day/index.html">머니데이</a>
+        <a href="../evidence-desk/index.html">증거</a>
+        <a href="../operator/index.html">원장</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Live send desk</p>
+          <h1>붙여넣고, 입력 번들 저장하고, 한 줄만 실행합니다</h1>
+          <p>원장, 따뜻한 후보, 답장, 결제 증거를 한 화면에서 묶어 `money:live` 실행 준비를 끝냅니다.</p>
+        </div>
+        <aside>
+          <span id="gatePill">결제 루트 필요</span>
+          <strong id="nextSend">분석 대기</strong>
+        </aside>
+      </section>
+
+      <section class="workspace">
+        <form id="liveForm" class="inputPanel">
+          <div class="actions">
+            <button id="loadSeed" type="button">원장 샘플</button>
+            <button id="loadWarm" type="button">후보/답장 샘플</button>
+          </div>
+          <div class="split">
+            <label>원장 경로 <input name="ledgerPath" value="outreach/prospect-seed.csv" /></label>
+            <label>입력 번들 경로 <input name="inputsPath" value="outreach/generated/brief30-live-inputs.json" /></label>
+            <label>출력 폴더 <input name="outDir" value="outreach/generated/live" /></label>
+          </div>
+          <div class="split">
+            <label>기준일 <input name="date" type="date" /></label>
+            <label>월 <input name="month" placeholder="2026-05" /></label>
+            <label>공개 URL <input name="publicUrl" placeholder="https://your-public-url/" /></label>
+          </div>
+          <label>결제 루트 <input name="paymentRoute" placeholder="은행명 계좌번호 예금주 또는 팀 결제 URL" /></label>
+          <label>원장 CSV <textarea id="ledgerText" spellcheck="false"></textarea></label>
+          <label>따뜻한 후보 메모 <textarea id="peopleText" spellcheck="false" placeholder="name,company,role,relation,note"></textarea></label>
+          <label>답장 메모 <textarea id="replyText" spellcheck="false" placeholder="김PM | 팀 결재 올릴 수 있게 범위랑 금액 알려주세요."></textarea></label>
+          <label>결제 증거 <textarea id="paymentText" spellcheck="false" placeholder="2026-05-23 김PM 300,000원 B30-TEAM team"></textarea></label>
+        </form>
+
+        <section class="outputPanel">
+          <div class="metricGrid" id="metricGrid"></div>
+          <article class="commandCard">
+            <div>
+              <h2>실행 한 줄</h2>
+              <button type="button" data-copy="#commandText">복사</button>
+            </div>
+            <pre id="commandText"></pre>
+          </article>
+          <article class="commandCard">
+            <div>
+              <h2>입력 번들 JSON</h2>
+              <button id="downloadInputs" type="button">다운로드</button>
+              <button type="button" data-copy="#inputsJson">복사</button>
+            </div>
+            <pre id="inputsJson"></pre>
+          </article>
+          <div class="columns">
+            <article>
+              <h2>생성될 파일</h2>
+              <div id="fileList" class="list"></div>
+            </article>
+            <article>
+              <h2>생성될 ZIP</h2>
+              <div id="zipList" class="list"></div>
+            </article>
+          </div>
+          <article class="commandCard">
+            <div>
+              <h2>라이브 런 시트</h2>
+              <button type="button" data-copy="#fullText">복사</button>
+            </div>
+            <pre id="fullText"></pre>
+          </article>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

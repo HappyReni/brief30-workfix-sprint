@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f766e'/%3E%3Cpath d='M17 17h30v6H17zm0 11h20v5H17zm0 10h30v5H17zm0 10h15v5H17z' fill='%23fffaf0'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.js"></script>
+    <title>Brief30 Payment Proof</title>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <nav>
+          <strong>Brief30 proof</strong>
+          <div>
+            <a href="../invoice/index.html?offer=team" id="invoice">청구서</a>
+            <a href="../operator/index.html">운영판</a>
+          </div>
+        </nav>
+        <section class="heroGrid">
+          <div>
+            <p class="eyebrow">After payment</p>
+            <h1 id="title">300,000원 팀 브리핑 스프린트 결제 증빙</h1>
+            <p>
+              입금 후 아래 항목을 채우고 증빙 문안을 보내주세요.
+              이 화면은 결제를 만들지 않으며, 실제 확인 전에는 매출로 기록하지 않습니다.
+            </p>
+          </div>
+          <aside class="summary" aria-label="Payment proof summary">
+            <span>금액</span>
+            <strong id="amount"></strong>
+            <dl>
+              <div>
+                <dt>주문번호</dt>
+                <dd id="ref"></dd>
+              </div>
+              <div>
+                <dt>입금일</dt>
+                <dd id="paidAt"></dd>
+              </div>
+            </dl>
+          </aside>
+        </section>
+      </header>
+
+      <section class="workGrid">
+        <form class="panel" id="paidForm">
+          <div class="sectionHead">
+            <p class="eyebrow">Proof fields</p>
+            <h2>결제 확인 항목</h2>
+          </div>
+          <label>
+            <span>상품</span>
+            <select name="offer">
+              <option value="team">300,000원 팀 브리핑 스프린트</option>
+              <option value="workfix">300,000원 Workfix Sprint</option>
+              <option value="service">99,000원 대행팩</option>
+              <option value="setup">49,000원 셋업팩</option>
+            </select>
+          </label>
+          <label>
+            <span>주문번호</span>
+            <input name="ref" placeholder="B30-INV-20260523-TEAM" />
+          </label>
+          <label>
+            <span>입금자명/구매자</span>
+            <input name="buyer" placeholder="예: Lead 20" />
+          </label>
+          <label>
+            <span>금액</span>
+            <input name="amount" inputmode="numeric" placeholder="300000" />
+          </label>
+          <label>
+            <span>입금일</span>
+            <input name="paidAt" type="date" />
+          </label>
+          <label>
+            <span>용도</span>
+            <input name="useCase" placeholder="팀 주간보고/회의록 반복 정리" />
+          </label>
+          <label>
+            <span>결제수단/입금계좌</span>
+            <input name="paymentRoute" placeholder="은행 이체, 카드, 결제 링크 등" />
+          </label>
+          <label>
+            <span>회신 연락처</span>
+            <input name="contact" placeholder="email@example.com 또는 대화방" />
+          </label>
+        </form>
+
+        <section class="panel outputPanel">
+          <div class="sectionHead">
+            <div>
+              <p class="eyebrow">Send back</p>
+              <h2>구매자가 보내는 증빙 문안</h2>
+            </div>
+            <button class="ghost" data-copy="#evidence" type="button">복사</button>
+          </div>
+          <pre id="evidence"></pre>
+          <div class="sectionHead compact">
+            <div>
+              <p class="eyebrow">Operator CSV</p>
+              <h2>운영자 확인 후 병합</h2>
+            </div>
+            <button class="ghost" data-copy="#csv" type="button">CSV 복사</button>
+          </div>
+          <pre class="csvBox" id="csv"></pre>
+          <p class="finePrint">
+            CSV는 실제 입금 화면, 카드 영수증, 결제 알림을 확인한 뒤에만 ledger에 병합하세요.
+          </p>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

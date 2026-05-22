@@ -1,0 +1,396 @@
+:root {
+  --ink: #19231f;
+  --muted: #667168;
+  --paper: #fbfaf4;
+  --wash: #edf1e8;
+  --teal: #0f766e;
+  --red: #dc4a32;
+  --gold: #b98518;
+  --line: rgba(25, 35, 31, 0.15);
+  color: var(--ink);
+  background: var(--wash);
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.hero {
+  position: relative;
+  display: grid;
+  min-height: 92vh;
+  align-items: end;
+  overflow: hidden;
+  padding: 24px clamp(18px, 4vw, 64px) 72px;
+  color: #fff;
+  background: #15211d;
+}
+
+.hero::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(90deg, rgba(11, 18, 16, 0.88), rgba(11, 18, 16, 0.5), rgba(11, 18, 16, 0.08));
+}
+
+.hero img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 56% 28%;
+  filter: saturate(0.85);
+}
+
+nav,
+.heroCopy {
+  position: relative;
+  z-index: 1;
+}
+
+nav {
+  position: absolute;
+  top: 22px;
+  right: clamp(18px, 4vw, 64px);
+  left: clamp(18px, 4vw, 64px);
+  display: flex;
+  justify-content: space-between;
+  font-weight: 800;
+}
+
+.heroCopy {
+  max-width: 760px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--red);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 14px;
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  font-size: 8.8rem;
+  line-height: 0.88;
+  letter-spacing: 0;
+}
+
+h2 {
+  margin-bottom: 18px;
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  font-size: 4rem;
+  line-height: 1.02;
+  letter-spacing: 0;
+}
+
+h3 {
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+}
+
+.heroCopy > p:not(.eyebrow) {
+  max-width: 660px;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 1.22rem;
+  line-height: 1.58;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.primary,
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  border-radius: 8px;
+  padding: 0 16px;
+  font-weight: 900;
+  line-height: 1.15;
+  text-align: center;
+  white-space: normal;
+}
+
+.primary {
+  color: #fff;
+  background: var(--teal);
+}
+
+.secondary {
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+}
+
+.band {
+  display: grid;
+  gap: 28px;
+  padding: clamp(46px, 8vw, 96px) clamp(18px, 5vw, 78px);
+}
+
+.proofBand {
+  grid-template-columns: 0.82fr 1.18fr;
+  background: var(--paper);
+}
+
+.resultBand,
+.workfixBand {
+  grid-template-columns: minmax(0, 1fr) 220px;
+  align-items: center;
+  background: #e9efe7;
+}
+
+.resultBand p,
+.workfixBand p {
+  max-width: 760px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.workfixBand {
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.38fr);
+  background: #f4efe2;
+}
+
+.workfixPanel {
+  border: 1px solid rgba(15, 118, 110, 0.25);
+  border-radius: 8px;
+  padding: 20px;
+  background: #fffefa;
+  box-shadow: 0 20px 45px rgba(25, 35, 31, 0.1);
+}
+
+.workfixPanel span {
+  color: var(--teal);
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.workfixPanel strong {
+  display: block;
+  margin: 10px 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  font-size: 5.4rem;
+  line-height: 0.9;
+}
+
+.workfixPanel .primary {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.proofGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.proofGrid article,
+.priceBox {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+  background: #fffefa;
+}
+
+.priceBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.proofGrid span {
+  display: inline-grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  margin-bottom: 18px;
+  color: #fff;
+  background: var(--red);
+  border-radius: 50%;
+  font-weight: 900;
+}
+
+.proofGrid p,
+.splitBand p,
+.priceBand p,
+.priceBox p {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.splitBand,
+.priceBand {
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.72fr);
+  align-items: center;
+}
+
+.splitBand {
+  background: #e6ece2;
+}
+
+.splitBand ul {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.splitBand li {
+  border-bottom: 1px solid var(--line);
+  padding: 14px 0;
+  font-weight: 850;
+}
+
+.priceBand {
+  grid-template-columns: 0.7fr 1.3fr;
+  background: #f7f1df;
+}
+
+.priceGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 12px;
+}
+
+.priceBox span {
+  color: var(--gold);
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.priceBox strong {
+  display: block;
+  margin: 12px 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  font-size: clamp(2rem, 2vw, 2.75rem);
+  line-height: 0.95;
+  white-space: nowrap;
+}
+
+.priceBox .primary {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.priceBox p {
+  flex: 1;
+}
+
+.priceBox.featured {
+  border-color: rgba(220, 74, 50, 0.45);
+  box-shadow: 0 22px 50px rgba(93, 48, 32, 0.14);
+}
+
+.teamBox {
+  background: #fff7df;
+}
+
+.checkoutBand {
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.8fr);
+  align-items: center;
+  background: var(--paper);
+}
+
+.checkoutBand pre {
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+  color: #fff;
+  background: #17231f;
+  white-space: pre-wrap;
+}
+
+html[data-checkout="external"] .checkoutBand {
+  display: none;
+}
+
+html[data-checkout="external"] [data-team-link],
+html[data-checkout="external"] [data-workfix-link] {
+  background: var(--red);
+}
+
+.outreachBand {
+  background: var(--ink);
+  color: #fff;
+}
+
+blockquote {
+  max-width: 980px;
+  margin: 0;
+  border-left: 5px solid var(--red);
+  padding-left: 22px;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 1.7rem;
+  line-height: 1.52;
+}
+
+.outreachBand .secondary {
+  width: fit-content;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    min-height: 88vh;
+  }
+
+  h1 {
+    font-size: 4.2rem;
+  }
+
+  h2 {
+    font-size: 2.35rem;
+  }
+
+  .heroCopy > p:not(.eyebrow) {
+    font-size: 1.05rem;
+  }
+
+  .priceBox strong {
+    font-size: 2.6rem;
+  }
+
+  blockquote {
+    font-size: 1.2rem;
+  }
+
+  .proofBand,
+  .resultBand,
+  .workfixBand,
+  .splitBand,
+  .priceBand,
+  .checkoutBand,
+  .proofGrid,
+  .priceGrid {
+    grid-template-columns: 1fr;
+  }
+}
