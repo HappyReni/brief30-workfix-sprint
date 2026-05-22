@@ -40,6 +40,9 @@ function render() {
   setText("approvalPreview", state.approvalMessage);
   setText("operatorPreview", state.operatorCsv);
   setHref("emailOrder", state.mailtoUrl);
+  setHref("dealRoomLink", state.dealRoomUrl);
+  setHref("invoiceLink", state.invoiceUrl);
+  setHref("paidLink", state.paidUrl);
   setHref("intakeLink", state.intakeUrl);
   setHref("demoLink", state.demoUrl);
 }
@@ -54,7 +57,8 @@ function currentState() {
     form: Object.fromEntries(new FormData(form).entries()),
     selectedOffer,
     config,
-    orderRef
+    orderRef,
+    currentUrl: window.location.href
   });
 }
 

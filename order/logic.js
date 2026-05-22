@@ -61,11 +61,13 @@ export function buildOrderState({
   selectedOffer = DEFAULT_ORDER_OFFER,
   config = {},
   orderRef = makeRef(),
-  now = new Date()
+  now = new Date(),
+  currentUrl = ""
 } = {}) {
   const offerKey = normalizeOffer(selectedOffer);
   const offer = ORDER_OFFERS[offerKey];
   const issueDate = isoDate(now);
+  const rootUrl = publicRoot(config, currentUrl);
   const data = {
     offerKey,
     offer,
@@ -82,18 +84,20 @@ export function buildOrderState({
     paymentRoute: paymentRoute(config),
     deliveryWindow: deliveryWindow(config, offerKey),
     supportEmail: clean(config.supportEmail),
+    rootUrl,
     demoUrl: clean(config.demoUrl) || "../diagnostic/index.html",
     intakeBaseUrl: clean(config.intakeUrl) || "../intake/index.html"
   };
+  const links = buyerLinks(data);
 
   return {
     ...data,
+    ...links,
     intentLabel: INTENTS[data.intentKey].label,
     amountText: formatKrw(offer.price),
-    orderMessage: buildOrderMessage(data),
-    approvalMessage: buildApprovalMessage(data),
+    orderMessage: buildOrderMessage(data, links),
+    approvalMessage: buildApprovalMessage(data, links),
     operatorCsv: buildOperatorCsv(data),
-    intakeUrl: intakeLink(data),
     mailtoUrl: buildMailto(data)
   };
 }
@@ -118,7 +122,7 @@ export function formatKrw(value) {
   return `${Number(value || 0).toLocaleString("ko-KR")}원`;
 }
 
-function buildOrderMessage(data) {
+function buildOrderMessage(data, links) {
   return [
     `[Brief30 주문/승인 요청] ${data.orderRef}`,
     `상태: ${INTENTS[data.intentKey].label}`,
@@ -132,14 +136,17 @@ function buildOrderMessage(data) {
     `메모: ${data.memo}`,
     `결제/입금 안내: ${data.paymentRoute}`,
     `전달 시간: ${data.deliveryWindow}`,
-    `구매 후 intake: ${intakeLink(data)}`,
+    `개인 진행룸: ${links.dealRoomUrl}`,
+    `청구/결제 메모: ${links.invoiceUrl}`,
+    `결제 증빙: ${links.paidUrl}`,
+    `구매 후 intake: ${links.intakeUrl}`,
     "",
     "실제 결제 확인 전에는 매출로 기록하지 않습니다.",
     "민감한 회사명, 고객명, 개인정보는 제거해서 전달하겠습니다."
   ].filter(Boolean).join("\n");
 }
 
-function buildApprovalMessage(data) {
+function buildApprovalMessage(data, links) {
   const paymentLine = hasConfiguredPayment(data.paymentRoute)
     ? `승인 후 결제/입금 안내: ${data.paymentRoute}`
     : "승인 후 실제 결제 계좌 또는 결제 URL을 확인해 진행하겠습니다.";
@@ -158,7 +165,9 @@ function buildApprovalMessage(data) {
     "- 승인/주문 의사만으로는 매출 처리하지 않고 실제 결제 증거가 있어야 합니다.",
     "",
     `주문/승인 번호: ${data.orderRef}`,
-    `회신 연락처: ${data.contact}`
+    `회신 연락처: ${data.contact}`,
+    `진행룸: ${links.dealRoomUrl}`,
+    `청구/결제 메모: ${links.invoiceUrl}`
   ].join("\n");
 }
 
@@ -178,17 +187,63 @@ function buildOperatorCsv(data) {
 
 function buildMailto(data) {
   const subject = encodeURIComponent(`[Brief30 주문] ${data.orderRef}`);
-  const body = encodeURIComponent(data.orderMessage);
+  const body = encodeURIComponent(buildOrderMessage(data, buyerLinks(data)));
   return `mailto:${data.supportEmail}?subject=${subject}&body=${body}`;
 }
 
-function intakeLink(data) {
-  return buildUrl(data.intakeBaseUrl, {
-    ref: data.orderRef,
-    offer: data.offerKey,
-    buyer: data.buyer,
-    useCase: data.useCase
-  });
+function buyerLinks(data) {
+  return {
+    dealRoomUrl: orderUrl(data, "dealroom/index.html", {
+      offer: data.offerKey,
+      buyer: data.buyer,
+      company: data.company,
+      useCase: data.useCase,
+      ref: data.orderRef
+    }),
+    invoiceUrl: orderUrl(data, "invoice/index.html", {
+      offer: data.offerKey,
+      buyer: data.buyer,
+      company: data.company,
+      useCase: data.useCase,
+      ref: data.orderRef,
+      date: data.issueDate
+    }),
+    paidUrl: orderUrl(data, "paid/index.html", {
+      offer: data.offerKey,
+      ref: data.orderRef,
+      buyer: data.buyer,
+      amount: data.offer.price,
+      useCase: data.useCase,
+      date: data.issueDate
+    }),
+    intakeUrl: orderUrl(data, "intake/index.html", {
+      ref: data.orderRef,
+      offer: data.offerKey,
+      buyer: data.buyer,
+      useCase: data.useCase
+    }, data.intakeBaseUrl)
+  };
+}
+
+function orderUrl(data, path, values, fallbackBase = "") {
+  const base = data.rootUrl ? `${data.rootUrl}${path}` : fallbackBase || `../${path}`;
+  return buildUrl(base, values);
+}
+
+function publicRoot(config, currentUrl) {
+  const configured = normalizeRoot(config.publicUrl);
+  if (configured) return configured;
+  if (!currentUrl) return "";
+  try {
+    return new URL("../", currentUrl).href;
+  } catch {
+    return "";
+  }
+}
+
+function normalizeRoot(value) {
+  const root = clean(value);
+  return root ? (root.endsWith("/") ? root : `${root}/`) : "";
 }
 
 function buildUrl(base, values) {
