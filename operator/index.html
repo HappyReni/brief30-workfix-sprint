@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f766e'/%3E%3Cpath d='M16 20h32v5H16zm0 11h22v5H16zm0 11h28v5H16z' fill='%23fffaf0'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.js"></script>
+    <title>Brief30 Operator</title>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Brief30 operator</p>
+          <h1>월 30만원을 숫자로 밀어붙이는 런치 보드</h1>
+        </div>
+        <div class="targetBox">
+          <span>Target</span>
+          <strong>300,000원</strong>
+        </div>
+      </header>
+
+      <section class="metricGrid" aria-label="Revenue metrics">
+        <article>
+          <span>Closed</span>
+          <strong data-metric="closed">0원</strong>
+        </article>
+        <article>
+          <span>Weighted forecast</span>
+          <strong data-metric="forecast">0원</strong>
+        </article>
+        <article>
+          <span>Gap</span>
+          <strong data-metric="gap">300,000원</strong>
+        </article>
+        <article>
+          <span>Next move</span>
+          <strong data-metric="next">10 DMs</strong>
+        </article>
+      </section>
+
+      <section class="board">
+        <div class="panel controlPanel">
+          <div class="panelHeader">
+            <div>
+              <p class="eyebrow">Add lead</p>
+              <h2>오늘 연락할 사람</h2>
+            </div>
+            <button class="ghost" id="resetBoard" type="button">Reset</button>
+          </div>
+
+          <form id="leadForm">
+            <label>
+              <span>이름/식별자</span>
+              <input name="name" placeholder="예: 지인 A, 커뮤니티 댓글 B" required />
+            </label>
+            <label>
+              <span>세그먼트</span>
+              <select name="segment">
+                <option>직장인</option>
+                <option>프리랜서</option>
+                <option>에이전시</option>
+                <option>창업자</option>
+                <option>컨설턴트</option>
+              </select>
+            </label>
+            <label>
+              <span>소스</span>
+              <select name="source">
+                <option>direct_dm</option>
+                <option>community</option>
+                <option>referral</option>
+                <option>previous_client</option>
+                <option>social_post</option>
+              </select>
+            </label>
+            <label>
+              <span>오퍼</span>
+              <select name="offer">
+                <option value="team">300,000원 팀 브리핑 스프린트</option>
+                <option value="setup">49,000원 셋업팩</option>
+                <option value="self">19,000원 셀프툴</option>
+                <option value="service">99,000원 대행팩</option>
+              </select>
+            </label>
+            <label>
+              <span>메모</span>
+              <textarea name="note" placeholder="보고서/회의록을 자주 쓰는 맥락"></textarea>
+            </label>
+            <label>
+              <span>다음 연락일</span>
+              <input name="nextTouch" type="date" />
+            </label>
+            <button class="primary" type="submit">리드 추가</button>
+          </form>
+
+          <div class="importBox">
+            <p class="eyebrow">Bulk import</p>
+            <textarea id="bulkImport" placeholder="name,segment,source,offer,note"></textarea>
+            <button class="secondary" id="importLeads" type="button">CSV 붙여넣기 가져오기</button>
+            <a class="secondary inlineLink" href="../prospecting/index.html">프로스펙팅 데스크</a>
+          </div>
+
+          <div class="scriptBox">
+            <p class="eyebrow">Copy script</p>
+            <p id="scriptPreview"></p>
+            <button class="secondary" id="copyScript" type="button">현재 스크립트 복사</button>
+            <a class="secondary inlineLink" href="../replydesk/index.html">답장 분류 데스크</a>
+            <a class="secondary inlineLink" href="../launch/index.html">14일 런치 스프린트</a>
+            <a class="secondary inlineLink" href="../campaign/index.html">캠페인 문안 만들기</a>
+          </div>
+
+          <div class="importBox">
+            <p class="eyebrow">Reply desk import</p>
+            <textarea id="stageImport" placeholder="name,status,offer,next_touch,note"></textarea>
+            <button class="secondary" id="importStageUpdates" type="button">답장 업데이트 가져오기</button>
+            <a class="secondary inlineLink" href="../replydesk/index.html">답장 데스크 열기</a>
+          </div>
+
+          <div class="closeBox">
+            <p class="eyebrow">Close scripts</p>
+            <h3>답장 오면 바로 결제 링크로</h3>
+            <div class="checkoutGrid">
+              <label>
+                <span>셀프툴 URL</span>
+                <input data-checkout="self" placeholder="https://..." />
+              </label>
+              <label>
+                <span>셋업팩 URL</span>
+                <input data-checkout="setup" placeholder="https://..." />
+              </label>
+              <label>
+                <span>대행팩 URL</span>
+                <input data-checkout="service" placeholder="https://..." />
+              </label>
+              <label>
+                <span>팀 스프린트 URL</span>
+                <input data-checkout="team" placeholder="https://..." />
+              </label>
+              <label>
+                <span>결과물 예시 URL</span>
+                <input data-checkout="proof" placeholder="https://..." />
+              </label>
+              <label>
+                <span>팀 샘플 URL</span>
+                <input data-checkout="sample" placeholder="https://..." />
+              </label>
+            </div>
+            <div class="replyControls">
+              <select id="replyType">
+                <option value="useful">관심 있음</option>
+                <option value="price">가격 망설임</option>
+                <option value="privacy">보안 걱정</option>
+                <option value="service">대행 문의</option>
+              </select>
+              <select id="replyOffer">
+                <option value="team">300,000원 팀 브리핑 스프린트</option>
+                <option value="setup">49,000원 셋업팩</option>
+                <option value="self">19,000원 셀프툴</option>
+                <option value="service">99,000원 대행팩</option>
+              </select>
+            </div>
+            <p id="replyPreview"></p>
+            <button class="secondary" id="copyReply" type="button">응답 복사</button>
+            <a class="secondary inlineLink" href="../closing/index.html?offer=setup">결제 클로저 열기</a>
+          </div>
+
+          <div class="paymentBox">
+            <p class="eyebrow">Payment evidence</p>
+            <form id="paymentForm">
+              <label>
+                <span>구매자/리드</span>
+                <input name="buyer" placeholder="예: Lead 01" required />
+              </label>
+              <label>
+                <span>구매 오퍼</span>
+                <select name="offer">
+                  <option value="team">300,000원 팀 브리핑 스프린트</option>
+                  <option value="setup">49,000원 셋업팩</option>
+                  <option value="self">19,000원 셀프툴</option>
+                  <option value="service">99,000원 대행팩</option>
+                </select>
+              </label>
+              <label>
+                <span>입금/결제 금액</span>
+                <input name="amount" min="0" step="1000" type="number" />
+              </label>
+              <label>
+                <span>결제 증거</span>
+                <input name="ref" placeholder="주문번호, 입금자명, 링크" />
+              </label>
+              <button class="primary" type="submit">Paid 기록</button>
+            </form>
+            <div class="evidenceImport">
+              <p class="eyebrow">Close desk import</p>
+              <textarea id="paymentImport" placeholder="ref,buyer,offer,amount,contact,use_case,payment_route,date&#10;&quot;B30-CLOSE-...&quot;,&quot;김PM&quot;,&quot;99,000원 대행팩&quot;,&quot;99000&quot;,..."></textarea>
+              <button class="secondary" id="importPayments" type="button">증거 CSV 가져오기</button>
+            </div>
+            <a class="secondary inlineLink" href="../fulfillment/index.html">납품 작업대 열기</a>
+            <a class="secondary inlineLink" href="../aftercare/index.html">후기/소개 요청</a>
+            <a class="secondary inlineLink" href="../intake/index.html">Intake 열기</a>
+            <a class="secondary inlineLink" href="../closing/index.html?offer=service">견적/확인 문안</a>
+          </div>
+        </div>
+
+        <section class="panel pipelinePanel">
+          <div class="panelHeader">
+            <div>
+              <p class="eyebrow">Pipeline</p>
+              <h2>돈으로 이어지는 순서</h2>
+            </div>
+            <button class="ghost" id="exportCsv" type="button">CSV Export</button>
+          </div>
+          <div class="stageGrid" id="stageGrid"></div>
+          <section class="todayQueue" id="todayQueue"></section>
+          <section class="revenuePlan" id="revenuePlan"></section>
+          <section class="insightGrid">
+            <div class="miniPanel" id="sourcePanel"></div>
+            <div class="miniPanel" id="hotPanel"></div>
+          </section>
+          <section class="miniPanel paymentLedger" id="paymentLedger"></section>
+          <div class="leadTable" id="leadTable"></div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

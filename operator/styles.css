@@ -1,0 +1,498 @@
+:root {
+  --ink: #20251f;
+  --muted: #6a7268;
+  --paper: #f8f5ea;
+  --panel: #fffef8;
+  --line: rgba(32, 37, 31, 0.14);
+  --teal: #0f766e;
+  --red: #d64b34;
+  --gold: #bd8917;
+  color: var(--ink);
+  background: #e8ede3;
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.shell {
+  width: min(1480px, 100%);
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.topbar {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 18px;
+  align-items: end;
+  padding: 10px 0 22px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: var(--red);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  max-width: 980px;
+  margin-bottom: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  font-size: 5.3rem;
+  line-height: 0.96;
+  letter-spacing: 0;
+}
+
+h2 {
+  margin-bottom: 0;
+  font-size: 1.15rem;
+}
+
+.targetBox,
+.metricGrid article,
+.panel,
+.scriptBox,
+.paymentBox {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 254, 248, 0.9);
+}
+
+.targetBox {
+  padding: 18px;
+}
+
+.targetBox span,
+.metricGrid span,
+label span,
+.statusTag {
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.targetBox strong,
+.metricGrid strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 1.5rem;
+}
+
+.metricGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.metricGrid article {
+  min-height: 112px;
+  padding: 16px;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.44fr) minmax(620px, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.panel {
+  padding: 18px;
+  box-shadow: 0 18px 54px rgba(30, 44, 36, 0.1);
+}
+
+.controlPanel {
+  position: sticky;
+  top: 16px;
+}
+
+.panelHeader,
+.leadRow,
+.todayQueue,
+.rowActions {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+label {
+  display: grid;
+  gap: 7px;
+  margin-top: 14px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid #cfd7ce;
+  border-radius: 8px;
+  background: #fffefa;
+  color: var(--ink);
+  outline: none;
+  padding: 11px 12px;
+}
+
+textarea {
+  min-height: 82px;
+  resize: vertical;
+}
+
+.primary,
+.secondary,
+.ghost {
+  min-height: 40px;
+  border-radius: 8px;
+  border: 0;
+  padding: 0 13px;
+  font-weight: 900;
+}
+
+.primary {
+  width: 100%;
+  margin-top: 16px;
+  color: #fff;
+  background: var(--teal);
+}
+
+.secondary {
+  color: #fff;
+  background: var(--ink);
+}
+
+.inlineLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8px;
+  text-decoration: none;
+}
+
+.ghost {
+  border: 1px solid var(--line);
+  color: var(--ink);
+  background: #eef2ea;
+}
+
+.importBox,
+.scriptBox,
+.closeBox,
+.paymentBox,
+.evidenceImport {
+  margin-top: 14px;
+  padding: 14px;
+}
+
+.importBox textarea,
+.evidenceImport textarea {
+  min-height: 88px;
+}
+
+.scriptBox p:last-of-type,
+.closeBox p:last-of-type {
+  color: var(--muted);
+  line-height: 1.55;
+  white-space: pre-line;
+}
+
+.checkoutGrid,
+.replyControls {
+  display: grid;
+  gap: 8px;
+}
+
+.checkoutGrid {
+  grid-template-columns: 1fr;
+  margin-top: 10px;
+}
+
+.replyControls {
+  grid-template-columns: 1fr 1fr;
+  margin-top: 12px;
+}
+
+.stageGrid,
+.insightGrid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.insightGrid {
+  grid-template-columns: 1fr 1fr;
+  margin-top: 12px;
+}
+
+.miniPanel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px;
+  background: #fffefa;
+}
+
+.sourceRow,
+.hotLead {
+  display: grid;
+  gap: 3px;
+  width: 100%;
+  border: 0;
+  border-top: 1px solid var(--line);
+  padding: 10px 0;
+  color: var(--ink);
+  background: transparent;
+  text-align: left;
+}
+
+.sourceRow span,
+.hotLead span {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.paymentLedger {
+  margin-top: 12px;
+}
+
+.paymentRow {
+  display: grid;
+  gap: 3px;
+  border-top: 1px solid var(--line);
+  padding: 10px 0;
+}
+
+.paymentRow span,
+.emptyState,
+.paidLine {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.todayQueue {
+  margin-top: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px;
+  background: #edf4ed;
+}
+
+.todayQueue h3 {
+  margin: 0;
+}
+
+.queueList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.queueList button {
+  display: grid;
+  gap: 3px;
+  min-width: 150px;
+  border: 1px solid rgba(15, 118, 110, 0.2);
+  border-radius: 8px;
+  padding: 10px;
+  color: var(--ink);
+  background: #fffefa;
+  text-align: left;
+}
+
+.queueList span {
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.revenuePlan {
+  display: grid;
+  gap: 12px;
+  margin-top: 12px;
+  border: 1px solid rgba(15, 118, 110, 0.22);
+  border-radius: 8px;
+  padding: 14px;
+  background: #f3f8ef;
+}
+
+.planHeader,
+.planGrid,
+.closeList {
+  display: grid;
+  gap: 8px;
+}
+
+.planHeader {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+}
+
+.planHeader h3 {
+  margin: 0;
+}
+
+.planGrid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.planGrid article,
+.closeList a {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  background: #fffefa;
+}
+
+.planGrid span,
+.closeList span,
+.planGrid small {
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.closeList {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.closeList a {
+  display: grid;
+  gap: 4px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.stageCard {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  background: #f7f4e9;
+}
+
+.stageCard strong {
+  display: block;
+  margin-top: 6px;
+  font-size: 1.35rem;
+}
+
+.leadTable {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.leadRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(420px, 0.82fr);
+  align-items: start;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  background: #fffefa;
+}
+
+.leadRow.isDue {
+  border-color: rgba(214, 75, 52, 0.48);
+  box-shadow: inset 4px 0 0 var(--red);
+}
+
+.leadMain {
+  display: grid;
+  gap: 5px;
+}
+
+.leadMain strong {
+  font-size: 1rem;
+}
+
+.leadMain p {
+  margin-bottom: 0;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.rowActions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  min-width: 0;
+}
+
+.rowActions select,
+.rowActions input {
+  min-width: 0;
+}
+
+.statusTag {
+  display: inline-flex;
+  width: fit-content;
+  border-radius: 999px;
+  padding: 4px 8px;
+  background: rgba(15, 118, 110, 0.12);
+}
+
+@media (max-width: 900px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .topbar,
+  .metricGrid,
+  .board,
+  .stageGrid,
+  .insightGrid,
+  .planHeader,
+  .planGrid,
+  .closeList,
+  .replyControls,
+  .leadRow,
+  .todayQueue,
+  .rowActions {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar,
+  .leadRow,
+  .todayQueue,
+  .rowActions {
+    display: grid;
+  }
+
+  .controlPanel {
+    position: static;
+  }
+
+  .rowActions {
+    min-width: 0;
+  }
+
+  .rowActions select,
+  .rowActions input {
+    min-width: 0;
+  }
+}
