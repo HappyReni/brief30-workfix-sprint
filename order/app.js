@@ -20,6 +20,7 @@ document.getElementById("copyOrder").addEventListener("click", () => copyText("o
 document.getElementById("copyOrderTop").addEventListener("click", () => copyText("orderMessage", "copyOrderTop"));
 document.getElementById("copyApproval").addEventListener("click", () => copyText("approvalMessage", "copyApproval"));
 document.getElementById("copyApprovalTop").addEventListener("click", () => copyText("approvalMessage", "copyApprovalTop"));
+document.getElementById("copyPaymentRequest").addEventListener("click", () => copyText("paymentRequestMessage", "copyPaymentRequest"));
 document.getElementById("copyOperator").addEventListener("click", () => copyText("operatorCsv", "copyOperator"));
 
 render();
@@ -36,10 +37,12 @@ function render() {
   setText("orderRef", state.orderRef);
   setText("orderAmount", state.amountText);
   setText("intentStatusLabel", state.intentLabel);
+  setText("paymentStatusLabel", state.paymentStatusLabel);
   setText("bankAccount", state.paymentRoute);
   setText("deliveryWindow", state.deliveryWindow);
   setText("orderPreview", state.orderMessage);
   setText("approvalPreview", state.approvalMessage);
+  setText("paymentRequestPreview", state.paymentRequestMessage);
   setText("operatorPreview", state.operatorCsv);
   setHref("emailOrder", state.mailtoUrl);
   setHref("dealRoomLink", state.dealRoomUrl);

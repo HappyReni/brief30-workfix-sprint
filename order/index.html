@@ -135,6 +135,10 @@
               <dd id="intentStatusLabel"></dd>
             </div>
             <div>
+              <dt>결제 확인</dt>
+              <dd id="paymentStatusLabel"></dd>
+            </div>
+            <div>
               <dt>입금/결제 안내</dt>
               <dd id="bankAccount"></dd>
             </div>
@@ -153,6 +157,10 @@
               <pre id="approvalPreview"></pre>
             </section>
             <section>
+              <h3>결제 정보 요청</h3>
+              <pre class="compactPreview" id="paymentRequestPreview"></pre>
+            </section>
+            <section>
               <h3>운영판 CSV</h3>
               <pre class="compactPreview" id="operatorPreview"></pre>
             </section>
@@ -160,6 +168,7 @@
           <div class="buttonRow">
             <button class="primary" id="copyOrder" type="button">주문 메시지 복사</button>
             <button class="secondary" id="copyApproval" type="button">승인 요청 복사</button>
+            <button class="secondary" id="copyPaymentRequest" type="button">결제 정보 요청 복사</button>
             <button class="secondary" id="copyOperator" type="button">CSV 복사</button>
             <a class="secondary" id="emailOrder" href="#">이메일로 보내기</a>
             <a class="secondary" id="dealRoomLink" href="../dealroom/index.html">개인 진행룸</a>

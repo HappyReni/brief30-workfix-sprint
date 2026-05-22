@@ -94,9 +94,12 @@ export function buildOrderState({
     ...data,
     ...links,
     intentLabel: INTENTS[data.intentKey].label,
+    paymentConfigured: hasConfiguredPayment(data.paymentRoute),
+    paymentStatusLabel: hasConfiguredPayment(data.paymentRoute) ? "결제 안내 준비됨" : "결제 정보 확인 필요",
     amountText: formatKrw(offer.price),
     orderMessage: buildOrderMessage(data, links),
     approvalMessage: buildApprovalMessage(data, links),
+    paymentRequestMessage: buildPaymentRequestMessage(data, links),
     operatorCsv: buildOperatorCsv(data),
     mailtoUrl: buildMailto(data)
   };
@@ -169,6 +172,26 @@ function buildApprovalMessage(data, links) {
     `진행룸: ${links.dealRoomUrl}`,
     `청구/결제 메모: ${links.invoiceUrl}`
   ].join("\n");
+}
+
+function buildPaymentRequestMessage(data, links) {
+  const paymentLine = hasConfiguredPayment(data.paymentRoute)
+    ? `현재 결제 안내: ${data.paymentRoute}`
+    : "필요 조치: 결제 계좌 또는 결제 URL을 회신해 주세요.";
+  return [
+    `[Brief30 결제 정보 요청] ${data.orderRef}`,
+    `상품: ${data.offer.label}`,
+    `금액: ${formatKrw(data.offer.price)}`,
+    `구매자/입금자명: ${data.buyer}`,
+    data.company ? `회사/팀: ${data.company}` : "",
+    `회신 연락처: ${data.contact}`,
+    `필요한 결과물: ${data.useCase}`,
+    paymentLine,
+    `청구/결제 메모: ${links.invoiceUrl}`,
+    `개인 진행룸: ${links.dealRoomUrl}`,
+    "",
+    "이 메시지는 구매 의사 확인용이며, 실제 결제 증빙 확인 전에는 매출로 기록하지 않습니다."
+  ].filter(Boolean).join("\n");
 }
 
 function buildOperatorCsv(data) {
