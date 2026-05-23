@@ -68,9 +68,11 @@ export function buildOrderState({
   const offer = ORDER_OFFERS[offerKey];
   const issueDate = isoDate(now);
   const rootUrl = publicRoot(config, currentUrl);
+  const paymentConfigured = hasConfiguredPayment(config, offerKey);
   const data = {
     offerKey,
     offer,
+    paymentConfigured,
     orderRef,
     issueDate,
     nextTouch: addDays(issueDate, 1),
@@ -81,7 +83,7 @@ export function buildOrderState({
     useCase: clean(form.useCase) || defaultUseCase(offerKey),
     memo: clean(form.memo) || "아직 없음",
     intentKey: normalizeIntent(form.intentStatus),
-    paymentRoute: paymentRoute(config),
+    paymentRoute: paymentRoute(config, offerKey),
     deliveryWindow: deliveryWindow(config, offerKey),
     supportEmail: clean(config.supportEmail),
     rootUrl,
@@ -94,8 +96,7 @@ export function buildOrderState({
     ...data,
     ...links,
     intentLabel: INTENTS[data.intentKey].label,
-    paymentConfigured: hasConfiguredPayment(data.paymentRoute),
-    paymentStatusLabel: hasConfiguredPayment(data.paymentRoute) ? "결제 안내 준비됨" : "결제 정보 확인 필요",
+    paymentStatusLabel: data.paymentConfigured ? "결제 안내 준비됨" : "결제 정보 확인 필요",
     amountText: formatKrw(offer.price),
     orderMessage: buildOrderMessage(data, links),
     approvalMessage: buildApprovalMessage(data, links),
@@ -150,7 +151,7 @@ function buildOrderMessage(data, links) {
 }
 
 function buildApprovalMessage(data, links) {
-  const paymentLine = hasConfiguredPayment(data.paymentRoute)
+  const paymentLine = data.paymentConfigured
     ? `승인 후 결제/입금 안내: ${data.paymentRoute}`
     : "승인 후 실제 결제 계좌 또는 결제 URL을 확인해 진행하겠습니다.";
   return [
@@ -175,7 +176,7 @@ function buildApprovalMessage(data, links) {
 }
 
 function buildPaymentRequestMessage(data, links) {
-  const paymentLine = hasConfiguredPayment(data.paymentRoute)
+  const paymentLine = data.paymentConfigured
     ? `현재 결제 안내: ${data.paymentRoute}`
     : "필요 조치: 결제 계좌 또는 결제 URL을 회신해 주세요.";
   return [
@@ -278,15 +279,27 @@ function buildUrl(base, values) {
   return `${base}${separator}${params.toString()}`;
 }
 
-function paymentRoute(config) {
+function paymentRoute(config, offerKey) {
+  const checkoutUrl = checkoutRoute(config, offerKey);
+  if (checkoutUrl) return checkoutUrl;
   if (clean(config.bankAccount)) {
     return `${clean(config.bankAccount)} / ${clean(config.sellerName) || "Brief30"}`;
   }
   return clean(config.contactLine) || "결제 전 판매자에게 계좌를 확인하세요.";
 }
 
-function hasConfiguredPayment(value) {
-  return !String(value || "").includes("계좌를 확인");
+function hasConfiguredPayment(config, offerKey) {
+  if (checkoutRoute(config, offerKey)) return true;
+  return Boolean(clean(config.supportEmail) && clean(config.bankAccount));
+}
+
+function checkoutRoute(config, offerKey) {
+  if (offerKey === "team") return clean(config.teamUrl);
+  if (offerKey === "workfix") return clean(config.workfixUrl) || clean(config.teamUrl);
+  if (offerKey === "service") return clean(config.serviceUrl) || clean(config.buyUrl);
+  if (offerKey === "setup") return clean(config.setupUrl) || clean(config.buyUrl);
+  if (offerKey === "self") return clean(config.buyUrl);
+  return "";
 }
 
 function deliveryWindow(config, offerKey) {
