@@ -123,8 +123,16 @@ function enrichTarget(target, context) {
     score: scoreTarget(combined),
     dealRoomUrl: publicUrl(context.publicUrl, "dealroom/index.html", { offer: "workfix", buyer: target.name, company: target.segment, useCase: pain, ref }),
     invoiceUrl: publicUrl(context.publicUrl, "invoice/index.html", { offer: "workfix", buyer: target.name, company: target.segment, useCase: pain, ref, date: context.date }),
-    orderUrl: publicUrl(context.publicUrl, "order/index.html", { offer: "workfix", buyer: target.name, useCase: pain }),
-    sampleUrl: publicUrl(context.publicUrl, `outreach/generated/brief30-workfix-followup-${context.date}.md`, {})
+    orderUrl: publicUrl(context.publicUrl, "order/index.html", {
+      offer: "workfix",
+      buyer: target.name,
+      company: target.segment,
+      useCase: pain,
+      intentStatus: context.paymentRoute ? "approved_pending_payment" : "payment_route_needed",
+      memo: target.note,
+      ref
+    }),
+    sampleUrl: publicUrl(context.publicUrl, "fulfillment/index.html", { offer: "workfix", buyer: target.name, ref })
   };
   return { ...row, message: messageFor(row, context) };
 }
@@ -143,7 +151,8 @@ function messageFor(target, context) {
     `참고 허브: ${context.publicUrl}`,
     `개인 진행룸: ${target.dealRoomUrl}`,
     `청구/결제 메모: ${target.invoiceUrl}`,
-    `샘플 납품물: ${target.sampleUrl}`,
+    `주문/결제 정보 요청: ${target.orderUrl}`,
+    `납품 작업대: ${target.sampleUrl}`,
     routeLine,
     "",
     "가능한 첫 입력은 딱 3개면 됩니다: 현재 반복 업무, 샘플 파일/문장 1개, 원하는 결과 형태.",
@@ -218,8 +227,8 @@ function oneBuyerClose(row, context) {
     "Buyer links:",
     `- Personal room: ${row.dealRoomUrl}`,
     `- Invoice memo: ${row.invoiceUrl}`,
-    `- Order page: ${row.orderUrl}`,
-    `- Sample delivery: ${row.sampleUrl}`,
+    `- Order/payment request: ${row.orderUrl}`,
+    `- Fulfillment desk: ${row.sampleUrl}`,
     "",
     context.paymentRoute
       ? `Payment route already detected: ${context.paymentRoute}`

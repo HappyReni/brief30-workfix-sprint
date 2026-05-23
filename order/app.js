@@ -1,9 +1,9 @@
-import { DEFAULT_ORDER_OFFER, ORDER_OFFERS, buildOrderState, makeRef, normalizeOffer } from "./logic.js?v=20260523-payment-readiness";
+import { DEFAULT_ORDER_OFFER, ORDER_OFFERS, buildOrderState, makeRef, normalizeOffer } from "./logic.js?v=20260523-order-ref";
 
 const config = window.BRIEF30_ORDER_CONFIG || {};
 const params = new URLSearchParams(window.location.search);
 const form = document.getElementById("orderForm");
-const orderRef = makeRef();
+const orderRef = params.get("ref") || makeRef();
 let selectedOffer = normalizeOffer(params.get("offer") || DEFAULT_ORDER_OFFER);
 
 applyQueryDefaults();
