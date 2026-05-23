@@ -1,4 +1,4 @@
-import { DEFAULT_ORDER_OFFER, ORDER_OFFERS, buildOrderState, makeRef, normalizeOffer } from "./logic.js";
+import { DEFAULT_ORDER_OFFER, ORDER_OFFERS, buildOrderState, makeRef, normalizeOffer } from "./logic.js?v=20260523-payment-readiness";
 
 const config = window.BRIEF30_ORDER_CONFIG || {};
 const params = new URLSearchParams(window.location.search);
